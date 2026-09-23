@@ -1,20 +1,34 @@
 <template>
   <Teleport to="#modal-root">
-    <div v-if="show" class="modal-backdrop-custom" @click.self="$emit('close')">
-      <div class="modal-content-custom">
-        <div class="modal-header">
-          <span>{{ modal.name }}</span>
-          <button class="btn-close" @click="$emit('close')"></button>
+    <div 
+      v-if="show" 
+      class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+      @click.self="$emit('close')"
+    >
+      <div class="relative flex flex-col w-full max-w-4xl max-h-[90vh] overflow-hidden rounded-2xl">
+        
+        <div class="flex items-center justify-between px-5 py-4">
+          <span class="text-base font-semibold text-slate-200">{{ modal.name }}</span>
+          <button 
+            type="button"
+            class="inline-flex items-center justify-center p-1.5 text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition-colors"
+            aria-label="Close modal"
+            @click="$emit('close')"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
         </div>
 
-        <div class="modal-body text-center p-0">
+        <div class="p-0 text-center flex items-center justify-center overflow-hidden bg-black/40 cursor-pointer">
           <img
             :src="modal.imageUrl"
             :alt="modal.imageAlt"
-            class="w-100 h-100 modal-image"
-            style="object-fit: contain"
+            class="w-full h-full max-h-[75vh] object-contain"
           />
         </div>
+
       </div>
     </div>
   </Teleport>

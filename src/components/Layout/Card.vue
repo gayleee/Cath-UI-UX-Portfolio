@@ -11,7 +11,7 @@
       <lightbulbfillIcon v-else />
     </div>
 
-    <div class="content-card flex-grow-1">
+    <div class="content-card">
       <span class="text-body-lg">{{ card.heading }}</span>
       <p v-if="card.desc" class="text-body mb-0">{{ card.desc }}</p>
     </div>
@@ -19,11 +19,11 @@
 </template>
 
 <script setup>
-import lightbulbfillIcon from '../icons/lightbulbfillIcon.vue'
-import trophyfillIcon from '../icons/trophyfillIcon.vue'
-import bookfillIcon from '../icons/bookfillIcon.vue'
-import envelopefillIcon from '../icons/envelopefillIcon.vue'
-import globeIcon from '../icons/globeIcon.vue'
+// import lightbulbfillIcon from '../icons/lightbulbfillIcon.vue'
+// import trophyfillIcon from '../icons/trophyfillIcon.vue'
+// import bookfillIcon from '../icons/bookfillIcon.vue'
+// import envelopefillIcon from '../icons/envelopefillIcon.vue'
+// import globeIcon from '../icons/globeIcon.vue'
 
 const props = defineProps({
   card: Object,

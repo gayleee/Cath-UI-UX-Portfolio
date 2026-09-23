@@ -1,5 +1,5 @@
 <template>
-  <div class="intro-container container d-flex justify-content-center">
+  <div class="intro-container container flex justify-center">
     <video
       v-if="isVideo(introImage.introUrl)"
       :src="introImage.introUrl || introImage.introMp4"
@@ -39,17 +39,12 @@ const isVideo = (url) => {
 </script>
 
 <style scoped>
-.intro-container {
-  margin-top: 2rem;
-  padding: 0 1rem;
-}
-
 .intro-img {
   width: 100%;
-  max-width: 1300px;
+  max-width: 1024px;
   aspect-ratio: 16 / 9;
   object-fit: cover;
-  border-radius: var(--radius-sm);
+  border-radius: var(--border-radius);
 }
 
 @media (max-width: 768px) {

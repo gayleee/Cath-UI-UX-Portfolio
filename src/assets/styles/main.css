@@ -1,5 +1,104 @@
-@import '@/assets/styles/primitives.css';
-@import '@/assets/styles/variables.css';
-@import '@/assets/styles/typography.css';
-@import '@/assets/styles/layout.css';
-@import '@/assets/styles/index.css';
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@font-face {
+  font-family: 'Syne';
+  src: url('/fonts/syne.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Source Sans 3';
+  src: url('/fonts/sourcesans3.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme{
+  --font-display: 'Syne', system-ui, sans-serif;
+  --font-body: 'Source Sans 3', sans-serif;
+
+  --color-text-primary: var(--color-text-primary);
+  --color-text-secondary: var(--color-text-secondary);
+  --color-text-tertiary: var(--color-text-tertiary);
+}
+
+:root {
+  color-scheme: light;
+
+  --brand-color: #FF3300;
+
+  --color-tag-bg: #f1f5f9;
+  --color-tag-text: #64748b;
+  --color-tag-border: #e2e8f0;
+
+  --color-text-primary: var(--brand-color);
+  --color-text-secondary: #64748b;
+  --color-text-tertiary: #94a3b8;
+
+  /* Surface & Containers */
+  --color-surface-bg: var(--color-slate-100);
+  --color-container-bg: var(--color-white);
+  
+  /* Interactive Elements */
+  --color-button-bg: var(--brand-color);
+  --color-button-text: var(--color-slate-900);
+  --color-primary-bg: var(--color-slate-950);
+  
+  /* Borders & Dividers */
+  --color-border: var(--color-slate-300);
+
+  /* Feedback & Status */
+  --color-info-bg: var(--color-blue-50);
+  --color-info-border: var(--color-blue-200);
+  --color-info-text: var(--color-blue-700);
+  --color-status-success: var(--color-emerald-600);
+}
+
+:root.dark {
+  color-scheme: dark;
+
+  --brand-color: #FF5526;
+
+  --color-tag-bg: #262626;
+  --color-tag-text: #9CA3AF;
+  --color-tag-border: #404040;
+
+  --color-text-primary: var(--brand-color);
+  --color-text-secondary: #cbd5e1;
+  --color-text-tertiary: #94a3b8;
+
+  /* Surface & Containers */
+  --color-surface-bg: var(--color-slate-950);
+  --color-container-bg: var(--color-neutral-900);
+  
+  /* Interactive Elements */
+  --color-button-bg: var(--brand-color);
+  --color-button-text: var(--color-slate-900);
+  --color-primary-bg: var(--color-slate-950);
+  
+  /* Borders & Dividers */
+  --color-border: var(--color-neutral-800);
+
+  /* Feedback & Status */
+  --color-info-bg: #151D3B;
+  --color-info-border: #1E295D;
+  --color-info-text: var(--color-blue-400);
+  --color-status-success: var(--color-emerald-400);
+}
+
+@utility 
+text-hero-display {
+  font-size: clamp(2.25rem, 1.5rem + 5.5vw, 7.5rem);
+}
+
+@utility text-title-display {
+  font-size: clamp(2rem, 1.5rem + 2vw, 3rem);
+}
+
+@utility text-subtitle-display {
+  font-size: clamp(1.75rem, 1.25rem + 1.6vw, 2.5rem);
+}

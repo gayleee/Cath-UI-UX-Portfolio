@@ -1,117 +1,93 @@
 <template>
-  <main>
-    <div class="wrapper d-flex align-items-center justify-content-center">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-11 col-md-8 col-lg-6 text-center d-flex flex-column align-items-center">
-            <h1 class="mb-4 text-headline">Let's Work Together</h1>
+  <main class="min-h-screen">
+    <section 
+      class="relative min-h-screen px-6 py-12 md:py-16 md:px-16 flex flex-col justify-center md:justify-end max-w-352 mx-auto border-x-0 md:border-x border-slate-300 dark:border-(--color-border) overflow-hidden"
+    >
+      <div class="relative z-10 flex flex-col max-w-5xl gap-6 pb-12">
+        <h1 class="text-hero-display font-display text-5xl md:text-[80px] lg:text-[120px] leading-none text-balance tracking-tight">
+          Let's Connect
+        </h1>
+        
+        <p class="text-slate-500 text-lg md:text-xl max-w-2xl">
+          Open to Full-time and Contract opportunities. You can contact me via email or connect with me on LinkedIn.
+        </p>
 
-            <div class="d-flex flex-column gap-2 my-4">
-              <div v-for="card in cardContents" :key="card.heading">
-                <Card :card="card" />
-              </div>
-            </div>
-
-            <p class="my-4">
-              Let's build a project together—you may also reach out to me through the contact above.
-            </p>
-
-            <div v-for="ctaContent in ctaContents" :key="ctaContent.label" class="my-4">
-              <CTAButton @action="copyEmail" :cta="ctaContent" />
-            </div>
-
-            <div class="toast-container position-static mt-4">
-              <div
-                id="copyToast"
-                class="toast align-items-center text-success bg-success bg-opacity-10 border border-success border-opacity-50"
-                role="alert"
-                aria-live="assertive"
-                aria-atomic="true"
-                style="margin: 0 auto"
-              >
-                <div class="toast-body d-flex align-items-center p-2">
-                  <checkcirclefillIcon class="me-2" />
-                  <span class="me-auto fs-6">Copied to Clipboard.</span>
-                  <button type="button" class="btn-close ms-3" data-bs-dismiss="toast"></button>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div v-if="ctaContents && ctaContents.length" class="flex items-center gap-4 pt-2">
+          <Button
+            v-if="ctaContents[0]"
+            :cta="ctaContents[0]"
+            :url="ctaContents[0].url"
+            :is-external="ctaContents[0].link"
+            @click="copyEmail"
+          />
+          <Transition name="fade">
+            <span 
+              v-if="isCopied" 
+              class="inline-flex items-center justify-center gap-2 px-3 py-1.5 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 font-body"
+            >
+              Email copied to clipboard!
+              <button 
+              type="button"
+              @click="dismissToast">
+                <XIcon class="w-6 h-6 stroke-current" :stroke-width="1" />
+              </button>
+            </span>
+          </Transition>
+  
         </div>
       </div>
-    </div>
+    </section>
   </main>
 </template>
 
 <script setup>
-import { reactive } from 'vue'
-import { Toast } from 'bootstrap'
+import { ref, reactive } from 'vue'
+import { XIcon } from '@lucide/vue'
+import Button from '../Layout/Button.vue'
 
-import CTAButton from '../Layout/CTAButton.vue'
-import Card from '../Layout/Card.vue'
-import checkcirclefillIcon from '../icons/checkcirclefillIcon.vue'
+const isCopied = ref(false)
+let timer = null
 
 const copyEmail = () => {
-  const realEmail = `torrescathgaile88@gmail.com`
+  const realEmail = 'torrescathgaile888@gmail.com'
 
-  navigator.clipboard.writeText(realEmail).then(() => {
-    const toastElement = document.getElementById('copyToast')
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(realEmail).then(() => {
+      isCopied.value = true
 
-    const toastBootstrap = Toast.getOrCreateInstance(toastElement)
-    toastBootstrap.show()
-  })
+      if (timer) clearTimeout(timer)
+
+      timer = setTimeout(() => {
+        isCopied.value = false
+      }, 5000)
+    }).catch(err => {
+      console.error('Failed to copy email: ', err)
+    })
+  }
+}
+
+const dismissToast = () => {
+  if (timer) clearTimeout(timer)
+  isCopied.value = false
 }
 
 const ctaContents = reactive([
   {
-    label: 'Copy Email Address',
-    url: ``,
+    label: 'Copy Email',
+    url: '#',
     link: false,
-  },
-])
-
-const cardContents = reactive([
-  {
-    heading: 't*****c***g****8*@gmail.com',
-    award: false,
-    workshop: false,
-    contact: true,
   },
 ])
 </script>
 
 <style scoped>
-.contact-desc {
-  margin-left: auto;
-  margin-right: auto;
-}
-.custom-toast {
-  background-color: var(--container-primary);
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--outline-primary);
-  box-shadow: 0 10px 30px var(--nuetral-900);
-  border-radius: var(--radius-sm);
-  color: var(--text-success);
-}
-.toast.bg-success-subtle {
-  background-color: var(--container-success);
-  border: 1px solid var(--outline-success);
-}
-.wrapper {
-  padding-top: 100px;
-  padding-bottom: 60px;
-  min-height: 100vh;
-  background-color: var(--surface-primary);
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s ease;
 }
 
-@media (max-width: 768px) {
-  .wrapper {
-    padding-top: 120px;
-    min-height: 90vh;
-  }
-
-  h1 {
-    font-size: 2.5rem;
-  }
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

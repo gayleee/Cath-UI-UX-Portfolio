@@ -1,46 +1,30 @@
 <template>
-  <div class="container my-4">
-    <footer class="d-flex align-items-center justify-content-between">
+  <div class="mx-auto max-w-5xl">
+    <div class="flex flex-row items-center justify-between">
       <button
         @click="prevStudy"
         :disabled="currentIndex === 0"
-        class="d-flex border border-0 bg-transparent align-items-center gap-2"
+        class="flex items-center gap-2 bg-transparent transition-colors cursor-pointer disabled:cursor-not-allowed disabled:opacity-50"
+        :class="currentIndex === 0 ? 'text-(--text-muted)' : 'text-(--text-primary)'"
       >
-        <ChevronDoubleLeftIcon
-          :style="{
-            color:
-              currentIndex === studies.length - 1 ? 'var(--text-muted)' : 'var(--text-primary)',
-          }"
-        />
-        <span
-          :style="{
-            color:
-              currentIndex === studies.length - 1 ? 'var(--text-muted)' : 'var(--text-primary)',
-          }"
-          >Previous</span
-        >
+        <ChevronLeft class="w-6 h-6 stroke-current" :stroke-width="1" />
+        <span class="font-body font-bold">Previous</span>
       </button>
 
-      {{ currentIndex + 1 }} / {{ studies.length }}
+      <span class="font-body">
+        <strong class="text-(--brand-color)">{{ currentIndex + 1 }}</strong> / {{ studies.length }}
+      </span>
 
       <button
         @click="nextStudy"
         :disabled="currentIndex === studies.length - 1"
-        class="d-flex border border-0 bg-transparent align-items-center gap-2"
+        class="flex items-center gap-2 bg-transparent transition-colors cursor-pointer disabled:cursor-not-allowed disabled:opacity-50"
+        :class="currentIndex === studies.length - 1 ? 'text-(--text-muted)' : 'text-(--brand-color)'"
       >
-        <span
-          :style="{
-            color: currentIndex === studies.length - 1 ? 'var(--text-muted)' : 'var(--text-accent)',
-          }"
-          >Next</span
-        >
-        <ChevronDoubleRightIcon
-          :style="{
-            color: currentIndex === studies.length - 1 ? 'var(--text-muted)' : 'var(--text-accent)',
-          }"
-        />
+        <span class="font-body font-bold">Next</span>
+        <ChevronRight class="w-6 h-6 stroke-current" :stroke-width="1" />
       </button>
-    </footer>
+    </div>
   </div>
 </template>
 
@@ -48,8 +32,7 @@
 import { ref, computed, watch, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { studies } from '@/data/studies'
-import ChevronDoubleLeftIcon from '../icons/chevrondoubleleftIcon.vue'
-import ChevronDoubleRightIcon from '../icons/chevrondoublerightIcon.vue'
+import { ChevronLeft, ChevronRight } from '@lucide/vue'
 
 const route = useRoute()
 const router = useRouter()

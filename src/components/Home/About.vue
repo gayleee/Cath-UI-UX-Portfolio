@@ -1,95 +1,38 @@
 <template>
-  <main>
-    <section class="about-wrapper d-flex align-items-center">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-11 col-md-9 col-lg-7 text-center">
-            <div class="mb-4">
-              <ProfileImage />
-            </div>
+  <main class="min-h-screen">
+    <section 
+      class="relative min-h-screen px-6 py-16 md:px-16 flex flex-col justify-end max-w-352 mx-auto border-x-0 md:border-x border-slate-300 dark:border-(--color-border)"
+    >
+      <div class="flex flex-col max-w-5xl gap-6 pb-12">
+        <h1 class="text-hero-display font-display text-5xl md:text-[80px] lg:text-[120px] leading-none text-balance tracking-tight">
+          Outside UX/UI
+        </h1>
+        <p class="text-slate-500 text-lg md:text-xl max-w-2xl">
+          Artistic and creative works beyond UX/UI design, showcasing a range of skills and passions.
+        </p>
 
-            <h1 class="mb-2">About Me</h1>
-
-            <div class="d-flex flex-wrap justify-content-center gap-3">
-              <div
-                v-for="highlightContent in highlightContents"
-                :key="highlightContent.primaryText"
-              >
-                <Highlight :highlight="highlightContent" :theme="highlightContent.theme" />
-              </div>
-            </div>
-
-            <p class="mb-5">
-              Hello! I’m Cath, and I recently graduated from the
-              <strong>Polytechnic University of the Philippines</strong> with a degree in
-              information technology. My UI/UX journey formally began in college when our first
-              website project transformed my curiosity to passion. Since then, I've taught myself to
-              conduct user research, create design systems, and translate ideas into digital
-              experiences that solve real-world problems. <br /><br />Today, I am actively seeking a
-              role where I can contribute to building the foundation and recognition of a product.
-              If you're looking for a designer, drop me a message!
-            </p>
-
-            <div v-for="ctaContent in ctaContents" :key="ctaContent.label" class="d-inline-block">
-              <CTAButton :cta="ctaContent" :url="ctaContent.url" :isExternal="ctaContent.link" />
-            </div>
-          </div>
-        </div>
+        <!-- <div class="flex flex-row gap-3 pt-2" v-if="ctaContents && ctaContents.length">
+          <Button
+            v-if="ctaContents[1]"
+            :cta="ctaContents[1]"
+            :url="ctaContents[1].url"
+            :is-external="ctaContents[1].link"
+            variant="secondary" 
+          />
+          <Button
+            v-if="ctaContents[0]"
+            :cta="ctaContents[0]"
+            :url="ctaContents[0].url"
+            :is-external="ctaContents[0].link"
+          />
+        </div> -->
       </div>
     </section>
 
-    <!--Logo-->
-    <section class="container-fluid section-inverted" id="client-section">
-      <div class="row d-flex align-items-center justify-content-center">
-        <div class="col">
-          <div class="d-flex flex-column align-items-center justify-content-center">
-            <span class="text-light mb-4 text-subtitle">Tech Stack</span>
-            <div class="d-flex flex-wrap gap-4 justify-content-center">
-              <div v-for="skill in skillContents" :key="skill.desc" class="logo-wrapper">
-                <img :src="skill.url" :alt="skill.alt" class="img-fluid logo" />
-                <span class="tooltip-text">{{ skill.name }}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <!-- <section class="py-20 max-w-352 mx-auto border-x-0 md:border-x border-slate-200 dark:border-(--color-border)">
+      <h2 class="font-display text-2xl md:text-3xl text-center mb-12">Graphic Design</h2>
+    </section> -->
 
-    <section class="container">
-      <span class="mb-4 text-subtitle">Awards</span>
-      <div class="d-flex flex-column gap-2 my-4">
-        <div v-for="card in cardContents" :key="card.desc">
-          <Card :card="card" />
-        </div>
-      </div>
-      <span class="mb-4 text-subtitle">Language</span>
-      <div class="d-flex flex-column gap-2 mt-4">
-        <div v-for="lang in langContents" :key="lang.desc">
-          <Card :card="lang" />
-        </div>
-      </div>
-    </section>
-
-    <section class="container">
-      <div class="d-flex flex-wrap align-items-center gap-2">
-        <span class="text-subtitle">Works Outside UI/UX</span>
-
-        <div class="d-flex align-items-center gap-2">
-          <div class="circle" style="background-color: var(--container-primary)"></div>
-          <span class="text-subtitle" style="color: var(--text-accent)">Graphic Design</span>
-        </div>
-      </div>
-
-      <div class="my-4 gallery-wrapper">
-        <Gallery
-          v-for="image in galleryContents"
-          :key="image.imageUrl"
-          :gallery="image"
-          @open="openModal"
-        />
-        <Modal v-if="activeItem" :modal="activeItem" :show="true" @close="closeModal" />
-      </div>
-    </section>
   </main>
 </template>
 
@@ -98,10 +41,11 @@ import { reactive, ref } from 'vue'
 
 import ProfileImage from '../Layout/ProfileImage.vue'
 import Highlight from '../Layout/Highlight.vue'
-import CTAButton from '../Layout/CTAButton.vue'
-import Gallery from '../Layout/Gallery.vue'
 import Card from '../Layout/Card.vue'
 import Modal from '../Layout/Modal.vue'
+
+import Button from '../Layout/Button.vue'
+import Gallery from '../Layout/Gallery.vue'
 
 import brochureFront from '@/assets/galleryAssets/brochureFront.webp'
 import brochureBack from '@/assets/galleryAssets/brochureBack.webp'
@@ -125,13 +69,13 @@ function closeModal() {
   activeItem.value = null
 }
 
-const highlightContents = reactive([
-  {
-    primaryText: 'Fresh Grad',
-    secondaryText: 'Based in the Philippines',
-    theme: `highlight-metadata`,
-  },
-])
+// const highlightContents = reactive([
+//   {
+//     primaryText: 'Recent Graduate',
+//     secondaryText: 'Based in the Philippines',
+//     theme: `highlight-metadata`,
+//   },
+// ])
 
 const ctaContents = reactive([
   {
@@ -141,18 +85,18 @@ const ctaContents = reactive([
   },
 ])
 
-const cardContents = reactive([
-  {
-    desc: 'Latin Honor - Cum Laude',
-    award: true,
-    workshop: false,
-  },
-  {
-    desc: 'Champion, ISKOnnovation: EUREKA 2025 UI Design Competition',
-    award: true,
-    workshop: false,
-  },
-])
+// const cardContents = reactive([
+//   {
+//     desc: 'Latin Honor - Cum Laude',
+//     award: true,
+//     workshop: false,
+//   },
+//   {
+//     desc: 'Champion, ISKOnnovation: EUREKA 2025 UI Design Competition',
+//     award: true,
+//     workshop: false,
+//   },
+// ])
 
 const skillContents = reactive([
   { url: html, alt: `HTML Logo`, name: `HTML` },
@@ -225,9 +169,9 @@ const galleryContents = reactive([
   line-height: 1.8;
 }
 
-.d-flex.align-items-center.gap-2 {
+/* .d-flex.align-items-center.gap-2 {
   white-space: nowrap;
-}
+} */
 
 .gallery-wrapper {
   column-count: 3;

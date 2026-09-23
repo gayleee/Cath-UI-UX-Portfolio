@@ -2,6 +2,10 @@ import ticaThumbnail from '/src/assets/thumbnails/ticaThumbnail.webp'
 import excellThumbnail from '/src/assets/thumbnails/excellThumbnail.webp'
 import niicheThumbnail from '/src/assets/thumbnails/niicheThumbnail.webp'
 import ootuThumbnail from '/src/assets/thumbnails/ootuThumbnail.webp'
+// import igbeThumbnail from '/src/assets/thumbnails/igbeThumbnail.webp'
+import iskolarExpressThumbnail from '/src/assets/thumbnails/iskolarExpressThumbnail.webp'
+
+import iskolarExpressOverview from '/src/assets/iskolarExpressAssets/iskolarExpressOverview.webp'
 
 import ootuWireframes from '@/assets/ootuAssets/ootuWireframes.webp'
 import ootuOOUX from '@/assets/ootuAssets/ootuOOUX.webp'
@@ -45,39 +49,41 @@ import ticaDesign from '@/assets/ticaAssets/ticaDesign.webp'
 export const studies = [
   {
     id: 0,
-    slug: `order-of-the-undead`,
-    name: `Order of the Undead - Spooktober 7ᵗʰ Annual Visual Novel Jam`,
-    animationWebm: `/animations/ootuAnimation.webm`,
-    animationMp4: `/animations/ootuAnimation.mp4`,
-    thumbnailUrl: ootuThumbnail,
-    thumbnailAlt: `Order of the Undead Thumbnail`,
-    desc: `A Halloween-themed narrative game competing against 200+ entries in the biggest competition held by Itch under the visual novel category. I was recruited to a team of veterans, a huge opportunity for a designer like me that is completely new to the niche. I am able to experience the boundless creative freedom of game development, where I discover the importance of taking technical and design constraints into account.`,
-    readTime: ` • 10 min read`,
-    length: `August - September 2025`,
-    award: `45ᵗʰ out of 200+ entries, 7ᵗʰ Annual Spooktober Jam`,
+    slug: `egov-hackathon-2026`,
+    name: `Iskolar Express - eGov Hackaton 2026`,
+    // animationWebm: `animations/ootuAnimation.webm`,
+    // animationMp4: `animations/ootuAnimation.mp4`,
+    thumbnailUrl: iskolarExpressThumbnail,
+    thumbnailAlt: `eGov Hackathon 2026`,
+    desc: `Our team's eGov Hackathon solution—Iskolar Express, a centralized web-app scholarship management platform that streamlines stipend processing from submission to release by allowing students to find a suitable scholarship for their needs and conveniently apply online.`,
+    readTime: `• 10 min read`,
+    length: `July 2026 `,
     tag: [
-      { name: 'Web', category: 'platform' },
-      { name: 'Figma', category: 'tools' },
-      { name: 'Game', category: 'niche' },
-      { name: 'Design System', category: 'niche' },
+      {name: `Web`, category: `platform`},
+      {name: `Android`, category: `platform`},
+      {name: `IOS`, category: `platform`},
+      {name: `Next JS`, category: `tool`},
+      {name: `Supabase`, category: `tool`},
     ],
-    introData: {
-      introUrl: `/animations/ootuIntro.webm`,
+    introData:
+    {
+      // introUrl: `/animations/ootuIntro.webm`,
+      introUrl: iskolarExpressOverview,
       introMp4: `/animations/ootuIntro.webm`,
       introAlt: `Order of the Undead Intro Image`,
     },
     ctaData: {
-      label: `View Itch.io Page`,
+      label: `View Event`,
     },
     calloutData: {
       isNDA: false,
       ndaMessage: ``,
     },
-    url: `https://chanchangames.itch.io/order-of-the-undead`,
+    url: `https://mb.com.ph/2026/07/22/egovph-hackathon-opens-government-innovation-to-filipino-tech-talents`,
     link: true,
     highlightData: {
       primaryText: `10 min read`,
-      secondaryText: `August - September 2025`,
+      secondaryText: `Aug - Sep 2025`,
       theme: `highlight-metadata`,
     },
     roleData: {
@@ -85,9 +91,29 @@ export const studies = [
       secondaryText: `Multi-Role`,
       theme: `highlight-role`,
     },
-    roleDesc: `Led UI/UX design and closely collaborated with the UI developer. I also worked alongside other roles: writers, artists, composer, and many more. After handing off the UI, I worked as the brand identity designer of the game, where I developed the logo, character cards, and the aesthetic direction of the itch.io page of the game. 
-    
-    The game is available for web and desktop download and was officially launched on Itch.io under ChanChan Games on September 30, 2025.`,
+    roleDesc: [
+      {
+        role: `UI/UX Designer`, 
+        task: [
+          `Low and High Fidelity Wireframing`,
+          `Prototyping`,
+        ],
+        tools: [
+          `Figma`,
+        ]
+      },
+      {
+        role: `Brand Designer`, 
+        task: [
+          `Logo Design`,
+          `Graphical asset creation`,
+        ],
+        tools: [
+          `Affinity`,
+          `Rive`
+        ]
+      },
+    ],
     contents: [
       {
         name: `The Challenge`,
@@ -207,6 +233,185 @@ In the story—SPOILER ALERT—our main character performs the spell in a gravey
   },
   {
     id: 1,
+    slug: `order-of-the-undead`,
+    name: `Order of the Undead - Spooktober 7ᵗʰ Annual Visual Novel Jam`,
+    animationWebm: `/animations/ootuAnimation.webm`,
+    animationMp4: `/animations/ootuAnimation.mp4`,
+    thumbnailUrl: ootuThumbnail,
+    thumbnailAlt: `Order of the Undead Thumbnail`,
+    desc: `A Halloween-themed narrative game competing against 200+ entries in the biggest competition held by Itch under the visual novel category. I was recruited to a team of veterans, a huge opportunity for a designer like me that is completely new to the niche. I am able to experience the boundless creative freedom of game development, where I discover the importance of taking technical and design constraints into account.`,
+    readTime: ` • 10 min read`,
+    length: `Aug - Sept 2025`,
+    award: `45ᵗʰ out of 200+ entries, 7ᵗʰ Annual Spooktober Jam`,
+    tag: [
+      { name: 'Web', category: 'platform' },
+      { name: 'Game', category: 'type' },
+    ],
+    introData: {
+      introUrl: `/animations/ootuIntro.webm`,
+      introMp4: `/animations/ootuIntro.webm`,
+      introAlt: `Order of the Undead Intro Image`,
+    },
+    ctaData: {
+      label: `View Itch.io Page`,
+    },
+    calloutData: {
+      isNDA: false,
+      ndaMessage: ``,
+    },
+    url: `https://chanchangames.itch.io/order-of-the-undead`,
+    link: true,
+    highlightData: {
+      primaryText: `10 min read`,
+      secondaryText: `Aug - Sept 2025`,
+      theme: `highlight-metadata`,
+    },
+    roleData: {
+      primaryText: `UI/UX Lead & Brand Identity Designer`,
+      secondaryText: `Multi-Role`,
+      theme: `highlight-role`,
+    },
+    roleDesc: [
+      {
+        role: `UI/UX Designer`, 
+        task: [
+          `Low and High Fidelity Wireframing`,
+          `Asset creation`
+        ],
+        tools: [
+          `Figma`,
+        ]
+      },
+      {
+        role: `Brand Designer`, 
+        task: [
+          `Logo Design`,
+          `Graphical asset creation`
+        ],
+        tools: [
+          `Figma`,
+        ]
+      },
+    ],
+    contents: [
+      {
+        name: `The Challenge`,
+        contentTitle: `Rapid Development Time`,
+        contentDesc: `The project aims to launch a polished game entry where asset creation strictly begins at the start of September. However, making a visual novel—in a competition, nonetheless—is anything but easy; it requires full team effort. Roles are grouped, and each has a max of 1 week to work on their tasks. Our high-value goals:
+
+1. Assets polished, mechanics clear, and ultimately no bugs.
+2. Make the game as immersive as we possibly can.
+3. Publish and launch the game on or before September 30.`,
+      },
+      {
+        name: `The Setup`,
+        contentTitle: `Project Kick-Off`,
+        contentDesc: `With the 30-day sprint, we had to work with an agile methodology. The project's critical path is the writing and UI/UX (parallel production), with our deliverables putting various roles on hold until we reach finalization on Week 1. During pre-production I prepared and applied Object-Oriented User Experience (OOUX) and Mood Board as a foundation for later processes where ideas of the plot, mechanic, and number of characters were discussed.`,
+        contentImages: [
+          {
+            contentUrl: ootuOOUX,
+            contentAlt: `Order of the Undead OOUX`,
+            contentImgDesc: `Figure 1. Applied OOUX to map data and identify relationship between said data and user flow. Note: During this time, the game is named as "Undead Cafe" temporarily.`,
+          },
+          {
+            contentUrl: ootuWireframes,
+            contentAlt: `Order of the Undead Wireframes`,
+            contentImgDesc: `Figure 1.1. High-fidelity wireframes to visualize user flow early.`,
+          },
+        ],
+      },
+      {
+        name: `The Process`,
+        contentTitle: `UX Discovery: Layout Effectiveness`,
+        contentDesc: `Visual novels often have mini-games, and this project is no exception. This mode is a cooking game and it is an integral part of the story as the ending paths rely on this. The premise is that our main character works for a cafe to build her new life, where she meets new characters and learns about their preferences. However, there are three major problems: Unclear visual hierarchy, High interaction cost, and an overloaded cognitive load.
+
+The solution is to separate them into two sides and condense the method into one preparation point (a kiosk) and use Z-pattern layout. It allows the players to naturally scan categories and ingredients that is placed near each other.`,
+        contentImages: [
+          {
+            contentUrl: ootuDraft,
+            contentAlt: `Order of the Undead No cohesive layout`,
+            contentImgDesc: `Figure 1.2. A layout with no pattern or form. Orange circles stand for the preparation points, and dashed lines are the paths to each. This layout overcomplicates the process of preparing a single recipe.`,
+          },
+          {
+            contentUrl: ootuDraftFix,
+            contentAlt: `Order of the Undead Fixed Layout`,
+            contentImgDesc: `Figure 1.3. Preliminary Design Layout. The final production version was simplified to accommodate a reduced asset set while maintaining the UX established in this draft.`,
+          },
+        ],
+      },
+      {
+        name: ``,
+        contentTitle: `Developing Core Pages: Grimoire`,
+        contentDesc: `The Grimoire's primary function is to contextualize obtainable items and add to the world-building. The spell is unlocked by default, and the Grimoire itself is only accessible after finishing the early stage of the story. The items are mandatory for achieving endings; the system provides undiscovered entries with information regarding their sources. This ensures that even if the unlocked inventory is incomplete, it will contribute to what ending a player will get.`,
+        contentImages: [
+          {
+            contentUrl: grimoireFirstPage,
+            contentAlt: `Grimoire First Page`,
+            contentImgDesc: `Figure 1.4. Grimoire First Page.`,
+          },
+          {
+            contentUrl: grimoireSecondPage,
+            contentAlt: `Grimoire Second Page`,
+            contentImgDesc: `Figure 1.5. Grimoire Second Page.`,
+          },
+        ],
+      },
+      {
+        name: ``,
+        contentTitle: `Developing Core Pages: Spell Circle (Inventory)`,
+        contentDesc: `This screen serves as the bridge between the cooking game and the grimoire. As mentioned earlier, one of our high-value goals is to make the game as immersive as possible, and thus this screen is added for world-building purposes. 
+    
+In the story—SPOILER ALERT—our main character performs the spell in a graveyard; you can only do so when you are near achieving an ending. The circle in Figure 1.6 will be bursting with color the moment the player enacts the spell, thus adding more impact to your action in the story.`,
+        contentImages: [
+          {
+            contentUrl: ootuInventory,
+            contentAlt: `Order of the Undead Inventory`,
+            contentImgDesc: `Figure 1.6. This spell circle serves as the inventory. Based on the circle from Figure 1.4, our main character has to prepare and perform the spell in a larger space.`,
+          },
+          {
+            contentUrl: ootuInventoryFlow,
+            contentAlt: `Order of the Undead Inventory Flow.`,
+            contentImgDesc: `Figure 1.7. Inventory user flow.`,
+          },
+        ],
+      },
+      {
+        name: ``,
+        contentTitle: `Designing the Assets`,
+        contentDesc: `The story’s setting is modern day with fantasy themes. During early explorations, color and texture choices were too old to fit the setting; thus, I went with notebooks with modern clips and spiral holders. The only exception to this style is the Grimoire, which is intentionally made to look old and magical. This approach ensures that we can avoid a disconnect between assets and the plot of the story, as the UI is the foundation.`,
+        contentImages: [
+          {
+            contentUrl: ootuAssetSet,
+            contentAlt: `Order of the Undead Production Assets`,
+            contentImgDesc: `Figure 1.8. Production assets prepared for this case study only.`,
+          },
+          {
+            contentUrl: ootuExplorations,
+            contentAlt: `Order of the Undead Asset Explorations`,
+            contentImgDesc: `Figure 1.9. Early design explorations.`,
+          },
+        ],
+      },
+      {
+        name: `Impact and Outcomes`,
+        contentTitle: `Met All High Value Goals`,
+        contentDesc: `All UI/UX deliverables were completed on time within the first 7 days of the 30-day sprint. This enabled the art and other departments to work simultaneously on their tasks. Additionally, all of the screens and user flow aligned with the design so that it kept the integrity of the plot.`,
+      },
+      {
+        name: ``,
+        contentTitle: `Established Design System and Library`,
+        contentDesc: `Established a design system of over 120 assets to maintain visual and functional integrity across the game. This ecosystem of screens, components, and states reduces design redundancy and speeds development time as well as providing a roadmap for future contributors to improve the game.`,
+      },
+    ],
+    cards: [
+      {
+        heading: `Designing for Environmental Versatility`,
+        desc: `Assets was effective for the character’s primary setting: the cafe. However, I identified a disconnect between the dialogue window and background images. My takeaway is to implement variants early to account for narrative and environmental context. Designing for immersion is always a good thing, but it must be done with all possible settings within the scope.`,
+      },
+    ],
+  },
+  {
+    id: 2,
     slug: `niiche-community-platform`,
     name: `Niiche - Community Platform`,
     animationWebm: `/animations/niicheAnimation.webm`,
@@ -219,9 +424,7 @@ In the story—SPOILER ALERT—our main character performs the spell in a gravey
     award: `Champion, ISKOnnovation: EUREKA 2025 UI Design Competition`,
     tag: [
       { name: 'Web', category: 'platform' },
-      { name: 'Figma', category: 'tools' },
-      { name: 'Forum/Social', category: 'niche' },
-      { name: 'Prototype', category: 'niche' },
+      { name: 'Prototype', category: 'type' },
     ],
     introData: {
       introUrl: `/animations/niicheAnimation.webm`,
@@ -247,7 +450,20 @@ In the story—SPOILER ALERT—our main character performs the spell in a gravey
       secondaryText: `Solo`,
       theme: `highlight-role`,
     },
-    roleDesc: `In this competition, participants are one-man teams. This project showcases my ability to independently manage the entire product lifecycle, from planning to file handoff that we are all too used to performing in groups. I tackled the challenge with one goal in mind: create a platform that meets user expectations that is easy to follow and where information is not bombarded.`,
+    // roleDesc: `In this competition, participants are one-man teams. This project showcases my ability to independently manage the entire product lifecycle, from planning to file handoff that we are all too used to performing in groups. I tackled the challenge with one goal in mind: create a platform that meets user expectations that is easy to follow and where information is not bombarded.`,
+    roleDesc: [
+      {
+        role: `UI/UX Designer`, 
+        task: [
+          `Low and High Fidelity Wireframing`,
+          `Adhere to Gestalt Principle`,
+          `Prototyping`,
+        ],
+        tools: [
+          `Figma`,
+        ]
+      },
+    ],
     contents: [
       {
         name: `The Challenge`,
@@ -327,13 +543,15 @@ The color scheme is simple: the 60-30-10 rule is applied. I also went with the c
     ],
   },
   {
-    id: 2,
+    id: 3,
     slug: `excell-energy-website-revamp`,
     name: `Excell Energy and Powergen Corp (EEPC) - Website Revamp`,
     thumbnailUrl: excellThumbnail,
     thumbnailAlt: `excellThumbnail`,
-    desc: `A full website revamp for a B2B solar energy provider, completed over 3 months as an internship deliverable. This project was an intensive UI/UX journey that significantly pushed my skills and adaptability in a professional environment, proving to be my most challenging yet. My work aimed to fully enhance and modernize their digital presence and user experience.`,
-    readTime: ` • 10 min read`,
+    desc: `Excell Energy is a subsidiary of MabuhayPower Holdings Corporation, a solar energy provider based in Bonifacio Global City. I, along with my one co-intern, were accepted as a web developer under Mabuhay Energy Corporation (MECO) and were assigned to work under Excell Energy. 
+    
+    We were tasked to learn new tech stacks (Plasmic, Vue.js, Vercel, and Supabase) and our responsibilities are improving the website performance and modernizing their digital presence and user experience. Ultimately, the full website revamp was completed over 3 months as an internship deliverable.
+    `,
     length: `March - June 2025`,
     tag: [
       { name: 'Web', category: 'platform' },
@@ -366,7 +584,36 @@ The color scheme is simple: the 60-30-10 rule is applied. I also went with the c
       secondaryText: `Team`,
       theme: `highlight-role`,
     },
-    roleDesc: `I, along with my co-intern led the whole project life cycle with one goal in mind — to modernize and assist on increasing the business’ sales. My contribution focused on both design and implementation which includes but not limited to: directly handling research, wireframing, designing, deployment, documentation, and on-boarding process for future content administrators and editorial teams.`,
+    // roleDesc: `I, along with my co-intern led the whole project life cycle with one goal in mind — to modernize and assist on increasing the business’ sales. My contribution focused on both design and implementation which includes but not limited to: directly handling research, wireframing, designing, deployment, documentation, and on-boarding process for future content administrators and editorial teams.`,
+    roleDesc: [
+      {
+        role: `Web Developer`,
+        task: [
+          `Developed responsive web & mobile pages`,
+          `Integrated Plasmic Content Management System (CMS)`,
+          `Improved SEO`,
+          `Optimized image assets`,
+          `Fixed layout bugs`
+        ],
+        tools: [
+          `Plasmic`,
+          `Vue JS`,
+          `Vercel`,
+          `Supabase`,
+        ]
+      },
+      {
+        role: `UI/UX Designer`, 
+        task: [
+          `Low and High Fidelity Wireframing`,
+          `UX Sitemapping`,
+          `Competitor Analysis`
+        ],
+        tools: [
+          `Figma`,
+        ]
+      },
+    ],
     contents: [
       {
         name: `The Challenge`,
@@ -481,22 +728,20 @@ This layout ensures customers immediately see what the project appears to be in 
     ],
   },
   {
-    id: 3,
+    id: 4,
     slug: `tica-app`,
     name: `TICA: A Technological Innovation for Communication in Apraxia - A Mobile Application Utilizing AI-Driven Speech Therapy for Children with Apraxia`,
     animationWebm: `/animations/ticaAnimation.webm`,
     animationMp4: `/animations/ticaAnimation.mp4`,
     thumbnailUrl: ticaThumbnail,
     thumbnailAlt: `ticaThumbnail`,
-    desc: `Our capstone project—a gamified mobile application developed over 6 months, offering an AI-powered speech therapy for children with Childhood apraxia of speech (CAS). Built with Kivy, an open-source Python framework for developing GUI across various platforms. Notably, this project was also entered and competed in a week-long hybrid innovation event open to all PUPSTC students.`,
+    desc: `Our capstone project—a gamified mobile application developed over 6 months, offering an AI-powered speech therapy for children with Childhood apraxia of speech (CAS). Built with Kivy, an open-source Python framework for developing GUI across various platforms. Notably, this project was also entered and competed in a week-long hybrid innovation event open to all PUP students.`,
     readTime: ` • 10 min read`,
-    length: `August 2024 - February 2025`,
+    length: `Aug 2024 - Feb 2025`,
     award: `3ʳᵈ,  ISKOnnovation: The GDSC Ideathon 2024`,
     tag: [
+      { name: 'Academic', category: 'type' },
       { name: 'Android', category: 'platform' },
-      { name: 'Figma', category: 'tools' },
-      { name: 'Python', category: 'tools' },
-      { name: 'Prototype', category: 'niche' },
     ],
     introData: {
       introUrl: `/animations/ticaIntro.webm`,
@@ -522,7 +767,34 @@ This layout ensures customers immediately see what the project appears to be in 
       secondaryText: `Team`,
       theme: `highlight-role`,
     },
-    roleDesc: `I served a dual role, where I managed the end-to-end product lifecycle, from high-fidelity prototyping to front-end development. This required rapid prototyping, user-research, on-site client interview, and real-time adjustments as the team navigated the learning curve of a new framework and industry.`,
+    roleDesc: [
+      {
+        role: `UI/UX Designer`, 
+        task: [
+          `Low and High Fidelity Wireframing`,
+          `Prototyping`,
+          `User-research`,
+          `On-site client interview`
+        ],
+        tools: [
+          `Figma`,
+        ]
+      },
+      {
+        role: `Front-End Developer`,
+        task: [
+          `Developed responsive mobile pages`,
+          `Developed the app's theme switch feature`,
+          `Optimized image assets`,
+          `Fixed layout bugs`
+        ],
+        tools: [
+          `Python`,
+          `Kivy`,
+          `KivyMD`
+        ]
+      },
+    ],
     contents: [
       {
         name: `The Challenge`,
@@ -634,4 +906,194 @@ This approach directly improved our workflow during internship, where I and a co
       },
     ],
   },
+    // {
+//     id: 1,
+//     slug: `im-gonna-be-evil`,
+//     name: `I'm Gonna Be Evil - A Visual Novel Game, Demo Now Available on Steam`,
+//     animationWebm: `animations/ootuAnimation.webm`,
+//     animationMp4: `animations/ootuAnimation.mp4`,
+//     thumbnailUrl: igbeThumbnail,
+//     thumbnailAlt: `I'm Gonna Be Evil - Visual Novel Game`,
+//     desc: `I'm Gonna Be Evil is a visual novel released on Steam and Itch.`,
+//     readTime: `• 5 min read`,
+//     length: `January 2026 `,
+//     award:`Featured at Philippine GameDev Expo (PGDX) 2026`,
+//     tag: [
+//       {name: `Freelance`, category: `type`},
+//       {name: `Web`, category: `platform`},
+//       {name: `Steam`, category: `platform`},
+//     ],
+//     introData:
+//     {
+//       introUrl: `/animations/ootuIntro.webm`,
+//       introMp4: `/animations/ootuIntro.webm`,
+//       introAlt: `Order of the Undead Intro Image`,
+//     },
+//     ctaData: {
+//       label: `View Itch.io Page`,
+//     },
+//     calloutData: {
+//       isNDA: false,
+//       ndaMessage: ``,
+//     },
+//     url: `https://chanchangames.itch.io/order-of-the-undead`,
+//     link: true,
+//     highlightData: {
+//       primaryText: `10 min read`,
+//       secondaryText: `August - September 2025`,
+//       theme: `highlight-metadata`,
+//     },
+//     roleData: {
+//       primaryText: `UI/UX Lead & Brand Identity Designer`,
+//       secondaryText: `Multi-Role`,
+//       theme: `highlight-role`,
+//     },
+//     // roleDesc: `Led UI/UX design and closely collaborated with the UI developer. I also worked alongside other roles: writers, artists, composer, and many more. After handing off the UI, I worked as the brand identity designer of the game, where I developed the logo, character cards, and the aesthetic direction of the itch.io page of the game. 
+    
+//     // The game is available for web and desktop download and was officially launched on Itch.io under ChanChan Games on September 30, 2025.`,
+//     roleDesc: [
+//       {
+//         role: `UI/UX Designer`, 
+//         task: [
+//           `Low and High Fidelity Wireframing`,
+//           `Prototyping`,
+//           `User-research`,
+//           `On-site client interview`
+//         ],
+//         tools: [
+//           `Figma`,
+//         ]
+//       },
+//       {
+//         role: `Graphic Designer`,
+//         task: [
+//           `Developed responsive mobile pages`,
+//           `Developed the app's theme switch feature`,
+//           `Optimized image assets`,
+//           `Fixed layout bugs`
+//         ],
+//         tools: [
+//           `Python`,
+//           `Kivy`,
+//           `KivyMD`
+//         ]
+//       },
+//     ],
+//     contents: [
+//       {
+//         name: `The Challenge`,
+//         contentTitle: `Rapid Development Time`,
+//         contentDesc: `The project aims to launch a polished game entry where asset creation strictly begins at the start of September. However, making a visual novel—in a competition, nonetheless—is anything but easy; it requires full team effort. Roles are grouped, and each has a max of 1 week to work on their tasks. Our high-value goals:
+
+// 1. Assets polished, mechanics clear, and ultimately no bugs.
+// 2. Make the game as immersive as we possibly can.
+// 3. Publish and launch the game on or before September 30.`,
+//       },
+//       {
+//         name: `The Setup`,
+//         contentTitle: `Project Kick-Off`,
+//         contentDesc: `With the 30-day sprint, we had to work with an agile methodology. The project's critical path is the writing and UI/UX (parallel production), with our deliverables putting various roles on hold until we reach finalization on Week 1. During pre-production I prepared and applied Object-Oriented User Experience (OOUX) and Mood Board as a foundation for later processes where ideas of the plot, mechanic, and number of characters were discussed.`,
+//         contentImages: [
+//           {
+//             contentUrl: ootuOOUX,
+//             contentAlt: `Order of the Undead OOUX`,
+//             contentImgDesc: `Figure 1. Applied OOUX to map data and identify relationship between said data and user flow. Note: During this time, the game is named as "Undead Cafe" temporarily.`,
+//           },
+//           {
+//             contentUrl: ootuWireframes,
+//             contentAlt: `Order of the Undead Wireframes`,
+//             contentImgDesc: `Figure 1.1. High-fidelity wireframes to visualize user flow early.`,
+//           },
+//         ],
+//       },
+//       {
+//         name: `The Process`,
+//         contentTitle: `UX Discovery: Layout Effectiveness`,
+//         contentDesc: `Visual novels often have mini-games, and this project is no exception. This mode is a cooking game and it is an integral part of the story as the ending paths rely on this. The premise is that our main character works for a cafe to build her new life, where she meets new characters and learns about their preferences. However, there are three major problems: Unclear visual hierarchy, High interaction cost, and an overloaded cognitive load.
+
+// The solution is to separate them into two sides and condense the method into one preparation point (a kiosk) and use Z-pattern layout. It allows the players to naturally scan categories and ingredients that is placed near each other.`,
+//         contentImages: [
+//           {
+//             contentUrl: ootuDraft,
+//             contentAlt: `Order of the Undead No cohesive layout`,
+//             contentImgDesc: `Figure 1.2. A layout with no pattern or form. Orange circles stand for the preparation points, and dashed lines are the paths to each. This layout overcomplicates the process of preparing a single recipe.`,
+//           },
+//           {
+//             contentUrl: ootuDraftFix,
+//             contentAlt: `Order of the Undead Fixed Layout`,
+//             contentImgDesc: `Figure 1.3. Preliminary Design Layout. The final production version was simplified to accommodate a reduced asset set while maintaining the UX established in this draft.`,
+//           },
+//         ],
+//       },
+//       {
+//         name: ``,
+//         contentTitle: `Developing Core Pages: Grimoire`,
+//         contentDesc: `The Grimoire's primary function is to contextualize obtainable items and add to the world-building. The spell is unlocked by default, and the Grimoire itself is only accessible after finishing the early stage of the story. The items are mandatory for achieving endings; the system provides undiscovered entries with information regarding their sources. This ensures that even if the unlocked inventory is incomplete, it will contribute to what ending a player will get.`,
+//         contentImages: [
+//           {
+//             contentUrl: grimoireFirstPage,
+//             contentAlt: `Grimoire First Page`,
+//             contentImgDesc: `Figure 1.4. Grimoire First Page.`,
+//           },
+//           {
+//             contentUrl: grimoireSecondPage,
+//             contentAlt: `Grimoire Second Page`,
+//             contentImgDesc: `Figure 1.5. Grimoire Second Page.`,
+//           },
+//         ],
+//       },
+//       {
+//         name: ``,
+//         contentTitle: `Developing Core Pages: Spell Circle (Inventory)`,
+//         contentDesc: `This screen serves as the bridge between the cooking game and the grimoire. As mentioned earlier, one of our high-value goals is to make the game as immersive as possible, and thus this screen is added for world-building purposes. 
+    
+// In the story—SPOILER ALERT—our main character performs the spell in a graveyard; you can only do so when you are near achieving an ending. The circle in Figure 1.6 will be bursting with color the moment the player enacts the spell, thus adding more impact to your action in the story.`,
+//         contentImages: [
+//           {
+//             contentUrl: ootuInventory,
+//             contentAlt: `Order of the Undead Inventory`,
+//             contentImgDesc: `Figure 1.6. This spell circle serves as the inventory. Based on the circle from Figure 1.4, our main character has to prepare and perform the spell in a larger space.`,
+//           },
+//           {
+//             contentUrl: ootuInventoryFlow,
+//             contentAlt: `Order of the Undead Inventory Flow.`,
+//             contentImgDesc: `Figure 1.7. Inventory user flow.`,
+//           },
+//         ],
+//       },
+//       {
+//         name: ``,
+//         contentTitle: `Designing the Assets`,
+//         contentDesc: `The story’s setting is modern day with fantasy themes. During early explorations, color and texture choices were too old to fit the setting; thus, I went with notebooks with modern clips and spiral holders. The only exception to this style is the Grimoire, which is intentionally made to look old and magical. This approach ensures that we can avoid a disconnect between assets and the plot of the story, as the UI is the foundation.`,
+//         contentImages: [
+//           {
+//             contentUrl: ootuAssetSet,
+//             contentAlt: `Order of the Undead Production Assets`,
+//             contentImgDesc: `Figure 1.8. Production assets prepared for this case study only.`,
+//           },
+//           {
+//             contentUrl: ootuExplorations,
+//             contentAlt: `Order of the Undead Asset Explorations`,
+//             contentImgDesc: `Figure 1.9. Early design explorations.`,
+//           },
+//         ],
+//       },
+//       {
+//         name: `Impact and Outcomes`,
+//         contentTitle: `Met All High Value Goals`,
+//         contentDesc: `All UI/UX deliverables were completed on time within the first 7 days of the 30-day sprint. This enabled the art and other departments to work simultaneously on their tasks. Additionally, all of the screens and user flow aligned with the design so that it kept the integrity of the plot.`,
+//       },
+//       {
+//         name: ``,
+//         contentTitle: `Established Design System and Library`,
+//         contentDesc: `Established a design system of over 120 assets to maintain visual and functional integrity across the game. This ecosystem of screens, components, and states reduces design redundancy and speeds development time as well as providing a roadmap for future contributors to improve the game.`,
+//       },
+//     ],
+//     cards: [
+//       {
+//         heading: `Designing for Environmental Versatility`,
+//         desc: `Assets was effective for the character’s primary setting: the cafe. However, I identified a disconnect between the dialogue window and background images. My takeaway is to implement variants early to account for narrative and environmental context. Designing for immersion is always a good thing, but it must be done with all possible settings within the scope.`,
+//       },
+//     ],
+//   },
 ]

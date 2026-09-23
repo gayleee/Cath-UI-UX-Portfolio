@@ -1,88 +1,89 @@
 <template>
-  <header class="navbar navbar-expand-lg bg-body-tertiary fixed-top p-4">
-    <div class="container-fluid">
-      <router-link class="navbar-brand d-flex align-items-center justiy-content-center" to="/"
-        ><img src="/src/assets/icon.svg" alt="icon" class="me-2" /><span class="text-body"
-          >Cath_UI/UX</span
-        ></router-link
-      >
+  <header class="fixed top-0 left-0 right-0 z-50 border-b">
+    <div class="max-w-352 mx-auto w-full flex items-center justify-between py-3 px-6 md:px-12">
+      <router-link class="flex items-center justify-center" to="/">
+        <img src="/src/assets/icon.svg" alt="icon" class="mr-2 w-6 h-6 brightness-0 dark:brightness-100 transition-all" />
+      </router-link>
 
-      <button
-        class="navbar-toggler border border-0"
-        type="button"
-        data-bs-toggle="offcanvas"
-        data-bs-target="#offcanvasNavbar"
-        aria-controls="offcanvasNavbar"
-        aria-label="Toggle navigation"
+    <nav class="hidden md:flex items-center gap-6">
+      <router-link class="nav-link font-body" to="/">Work</router-link>
+      <router-link class="nav-link font-body" to="/about">About</router-link>
+      <router-link class="nav-link font-body" to="/contact">Contact</router-link>
+      <ToggleTheme />
+    </nav>
+
+    <button 
+      @click="isOpen = !isOpen"
+      type="button" 
+      class="md:hidden p-2 text-slate-500 hover:text-white focus:outline-none"
+      aria-label="Toggle navigation"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path v-if="!isOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 6h16M4 12h16M4 18h16"/>
+        <path v-else stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+
+    <Teleport to="body">
+      <div 
+        v-if="isOpen" 
+        @click="isOpen = false" 
+        class="fixed inset-0 z-40"
+      ></div>
+
+      <div 
+        class="fixed top-0 right-0 border-l border-(--color-border) bottom-0 w-64 z-50 p-4 flex flex-col justify-between transform transition-all duration-300 md:hidden sliding-panel"
+        :class="isOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0 invisible'"
       >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div
-        class="offcanvas offcanvas-end"
-        tabindex="-1"
-        id="offcanvasNavbar"
-        aria-labelledby="offcanvasNavbarLabel"
-      >
-        <div class="offcanvas-header">
-          <span class="offcanvas-title text-subtitle" id="offcanvasNavbarLabel">Explore More</span>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="offcanvas"
-            aria-label="Close"
-          ></button>
+        <div class="flex items-center justify-between">
+          <span class="font-display">Menu</span>
+          <button @click="isOpen = false" class="text-slate-500 hover:text-white">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
         </div>
-        <div class="offcanvas-body">
-          <ul class="navbar-nav justify-content-end align-items-center flex-grow-1 gap-4 pe-4">
-            <li class="nav-item">
-              <router-link class="nav-link" to="/" aria-current="page">Work</router-link>
-            </li>
-            <li class="nav-item">
-              <router-link class="nav-link" to="/about">About</router-link>
-            </li>
-            <li class="nav-item">
-              <router-link class="nav-link" to="/contact">Contact</router-link>
-            </li>
-            <!--Toggle Theme-->
-            <li class="nav-item">
-              <div class="d-flex align-items-center">
-                <Toggle-theme></Toggle-theme>
-              </div>
-            </li>
-          </ul>
+
+        <ul class="flex flex-col gap-4 my-auto">
+          <li>
+            <router-link class="nav-link font-body" @click="isOpen = false" to="/">Work</router-link>
+          </li>
+          <li>
+            <router-link class="nav-link font-body" @click="isOpen = false" to="/about">About</router-link>
+          </li>
+          <li>
+            <router-link class="nav-link font-body" @click="isOpen = false" to="/contact">Contact</router-link>
+          </li>
+        </ul>
+
+        <div class="pt-4 border-t flex items-start justify-between border-(--color-border)">
+          <span class="font-body">Theme</span>
+          <ToggleTheme />
         </div>
       </div>
+    </Teleport>
     </div>
   </header>
 </template>
 
 <script setup>
-import ToggleTheme from './ToggleTheme.vue'
+import { ref } from 'vue'
+import ToggleTheme from './ToggleTheme.vue';
+
+const isOpen = ref(false)
 </script>
 
 <style scoped>
-.navbar-brand img {
-  width: var(--icon-md);
-  height: var(--icon-md);
+header{
+  background-color: var(--color-container-bg);
+  border-color: var(--color-border);
 }
 
-.nav-link {
-  color: var(--text-primary);
+.sliding-panel{
+  background-color: var(--color-container-bg);
 }
 
-.nav-link:hover,
-.navbar-nav .nav-link.router-link-exact-active {
-  color: var(--text-accent);
-}
-
-@media only screen and (max-width: 600px) {
-  .navbar-brand {
-    display: none;
-  }
-  .navbar {
-    align-items: center;
-    justify-content: center;
-    display: flex;
-  }
+.nav-link{
+  font-size: 14px;
 }
 </style>

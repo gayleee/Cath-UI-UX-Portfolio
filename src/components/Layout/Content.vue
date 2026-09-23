@@ -1,41 +1,43 @@
 <template>
-  <section class="container content">
-    <div class="row g-0">
-      <div class="col-12">
-        <div class="d-flex flex-column">
-          <span class="mb-4 text-subtitle">{{ contents.name }}</span>
+  <section class="w-full min-h-screen flex flex-col justify-center">
+    <div class="mx-auto w-full max-w-5xl px-4">
+      <span class="block mb-4 text-subtitle">{{ contents.name }}</span>
 
-          <span class="text-body-lg">
-            {{ contents.contentTitle }}
-          </span>
+      <h2 class="font-display">{{ contents.contentTitle }}</h2>
 
-          <p class="mt-2">
-            {{ contents.contentDesc }}
-          </p>
-        </div>
-
-        <div class="row g-4">
-          <figure
-            v-for="(img, i) in contents.contentImages"
-            :key="i"
-            :class="['col-12', contents.contentImages.length > 1 ? 'col-lg-6' : 'col-lg-12']"
-          >
-            <a role="button" @click="$emit('open', img)">
-              <img
-                :src="img.contentUrl"
-                :alt="img.contentAlt"
-                class="img-fluid shadow-sm figure-img"
-                loading="lazy"
-              />
-            </a>
-
-            <figcaption v-if="img.contentImgDesc" class="mt-2 text-label">
-              <small>{{ img.contentImgDesc }}</small>
-            </figcaption>
-          </figure>
-        </div>
-      </div>
+      <p class="mt-2 text-slate-600 dark:text-slate-300">
+        {{ contents.contentDesc }}
+      </p>
     </div>
+
+    <div 
+      class="mx-auto w-full max-w-5xl px-4 mt-8 grid gap-6"
+      :class="contents.contentImages.length > 1 ? 'grid-cols-1 lg:grid-cols-2' : 'grid-cols-1'"
+    >
+      <figure
+        v-for="(img, i) in contents.contentImages"
+        :key="i"
+        class="w-full flex flex-col"
+      >
+        <a 
+          role="button" 
+          @click="$emit('open', img)"
+          class="block cursor-zoom-in overflow-hidden"
+        >
+          <img
+            :src="img.contentUrl"
+            :alt="img.contentAlt"
+            class="w-full h-auto object-cover shadow-sm transition-transform duration-300 hover:scale-[1.02]"
+            loading="lazy"
+          />
+        </a>
+
+        <figcaption v-if="img.contentImgDesc" class="mt-3 text-slate-500">
+          <small>{{ img.contentImgDesc }}</small>
+        </figcaption>
+      </figure>
+    </div>
+
   </section>
 </template>
 
@@ -49,11 +51,11 @@ defineEmits(['open'])
 </script>
 
 <style scoped>
-.content {
+/* .content {
   padding: 0;
   margin: var(--space-2xl) auto;
   max-width: 1000px;
-}
+} */
 
 .content-img {
   width: 100%;

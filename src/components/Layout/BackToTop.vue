@@ -1,60 +1,74 @@
 <template>
-  <div>
-    <Transition>
-      <a href="#" type="button" class="btn totop" v-if="isVisible" aria-label="Scroll to top">
-        <arrowupIcon />
-      </a>
-    </Transition>
-  </div>
+  <Transition name="fade">
+    <button
+      v-if="isVisible"
+      @click="scrollToTop"
+      type="button"
+      class="btn totop p-2"
+      aria-label="Scroll to top"
+    >
+      <ArrowUp :size="16" />
+    </button>
+  </Transition>
 </template>
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
-import arrowupIcon from '../icons/arrowupIcon.vue'
+import { ArrowUp } from '@lucide/vue'
+import { gsap } from 'gsap'
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
+
+gsap.registerPlugin(ScrollToPlugin)
 
 const isVisible = ref(false)
 
+const scrollToTop = () => {
+  gsap.to(window, {
+    duration: 0.8,
+    scrollTo: { y: 0 },
+    ease: 'power3.out'
+  })
+}
+
 const handleScroll = () => {
-  if (window.pageYOffset > 200) {
-    isVisible.value = true
-  } else {
-    isVisible.value = false
-  }
+  isVisible.value = window.scrollY > 200
 }
 
 onMounted(() => {
-  window.addEventListener('scroll', handleScroll)
+  window.addEventListener('scroll', handleScroll, { passive: true })
 })
 
 onUnmounted(() => {
-  window.removeEventListener = ('scroll', handleScroll)
+  window.removeEventListener('scroll', handleScroll)
 })
 </script>
 
 <style scoped>
-.v-enter-active,
-.v-leave-active {
-  transition: opacity 0.3s ease;
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-.v-leave-to,
-.v-enter-from {
+.fade-enter-from,
+.fade-leave-to {
   opacity: 0;
+  transform: translateY(10px);
 }
 
 .btn {
-  color: var(--white);
-  border-radius: var(--border-radius-4);
-  background-color: var(--container-primary);
+  color: var(--color-white);
+  border-radius: var(--border-radius-2);
+  background-color: var(--brand-color);
   border: none;
   position: fixed;
-  bottom: 20px;
-  right: 32px;
-  z-index: 99;
+  bottom: 56px;
+  right: 16px;
+  z-index: 49;
+  cursor: pointer;
 }
 
 .btn:hover {
-  background-color: var(--container-primary-hover);
+  background-color: var(--brand-color);
 }
 
 .btn:focus,
@@ -65,12 +79,11 @@ onUnmounted(() => {
 
 .btn:active,
 .btn.active {
-  background-color: var(--container-primary-hover);
-  border-color: var(--container-primary-hover);
+  background-color: var(--color-black-500);
   color: var(--white);
 }
 
-.btn-custom-orange:focus {
-  box-shadow: 0 0 0 0.25rem color-mix(in srgb, var(--color-orange-light-900), transparent 50%);
+.btn:focus {
+  box-shadow: 0 0 0 0.25rem color-mix(in srgb, var(--color-blue-900), transparent 50%);
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p class="text-center">
+    <p class="font-body whitespace-pre-line leading-relaxed">
       {{ intro }}
     </p>
   </div>

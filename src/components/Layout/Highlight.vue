@@ -1,6 +1,6 @@
 <template>
   <div
-    class="highlight-container d-flex justify-content-center align-items-center flex-wrap gap-2 my-4"
+    class="highlight-container flex justify-center items-center flex-wrap gap-2 my-4"
     :class="highlight.theme"
   >
     <span class="secondaryText">{{ highlight.secondaryText }}</span>
@@ -25,51 +25,60 @@ const props = defineProps({
 <style scoped>
 .secondaryText,
 .primaryText {
-  font-weight: var(--weight-semibold);
+  font-size: 18px;
   white-space: normal;
   max-width: 100%;
 }
 
 .highlight-metadata .circle {
-  background-color: var(--text-accent);
+  background-color: var(--color-green-500);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
 }
 
 .highlight-metadata .primaryText {
-  color: var(--text-accent);
-  font-size: var(--text-body);
+  color: var(--color-green-500);
+  font-size: 18px;
   text-align: center;
 }
 
 .highlight-metadata .secondaryText {
-  color: var(--text-secondary);
-  font-size: var(--text-body);
+  color: var(--color-green-500);
+  font-size: var(--color-green-500);
   text-align: center;
 }
 
 .highlight-role .circle {
-  background-color: var(--text-accent-on-dark);
+  background-color: var(--color-green-500);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
 }
 
 .highlight-role .primaryText {
-  color: var(--text-accent-on-dark);
-  font-size: var(--text-body);
+  color: var(--color-green-500);
+  font-size: 18px;
   text-align: center;
 }
 
 .highlight-role .secondaryText {
-  color: var(--white);
-  font-size: var(--text-body);
+  color: var(--color-green-500);
+  font-size: 18px;
   text-align: center;
 }
 
 .highlight-status .primaryText,
 .highlight-status .secondaryText {
-  color: var(--text-status);
-  font-size: var(--text-body);
+  color: var(--color-info-status);
+  font-size: 18px;
   text-align: center;
 }
 
 .highlight-status .circle {
-  background-color: var(--text-status);
+  background-color: var(--color-info-status);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
 }
 </style>

@@ -1,112 +1,56 @@
 <template>
-  <main>
-    <section
-      class="container vh-100 d-flex align-items-center justify content-center"
-      id="hero-section"
+  <main class="min-h-screen">
+    <section 
+      id="hero-section" 
+      class="relative min-h-screen px-6 py-16 md:px-16 flex flex-col justify-end max-w-352 mx-auto border-x-0 md:border-x border-slate-300 dark:border-(--color-border)"
     >
-      <div class="row my-5 py-5 g-0">
-        <div
-          class="d-flex flex-column align-items-center justify-content-center mt-5 pt-5 greeting-container"
-        >
-          <!--Heading-->
-          <transition name="fade" mode="out-in">
-            <span :key="currentGreeting.language" class="language text-title">
-              {{ currentGreeting.language }}
-            </span>
-          </transition>
-          <h1 class="text-center text-headline">
-            I design UI/UX across diverse niches—building systems that solves real-world problems.
-          </h1>
-          <!--Highlight-->
-          <div
-            v-for="highlightContent in highlightContents"
-            :key="highlightContent.primaryText"
-            class="mb-5"
-          >
-            <Highlight :highlight="highlightContent"></Highlight>
-          </div>
 
-          <!--CTA Button-->
-          <div class="hero-section">
-            <CTAButton
-              v-if="ctaContents[0]"
-              :cta="ctaContents[0]"
-              :url="ctaContents[0].url"
-              :isExternal="ctaContents[0].link"
-            />
-          </div>
+      <!-- <div class="custom-bg absolute -inset-px w-[calc(100%+1px)] h-[calc(100%+1px)] z-0 pointer-events-none">
+        <ol class="grid w-full h-full list-none p-0 m-0">
+          <li v-for="i in 8" :key="i"></li>
+        </ol>
+      </div> -->
+
+      <!-- add this here in this div if custom-bg will be used: relative z-10 and add overflow-hidden in the hero section -->
+      <div class="flex flex-col max-w-5xl gap-6 pb-12">
+        <h1 class="text-hero-display font-display text-5xl md:text-[80px] lg:text-[120px] leading-none text-balance tracking-tight">
+          UX/UI Designer.
+        </h1>
+        <p class="text-slate-500 text-lg md:text-xl max-w-2xl">
+          Delivering production-ready designs, for different industries and audiences.
+        </p>
+
+        <div class="flex flex-row gap-3 pt-2" v-if="ctaContents && ctaContents.length">
+          <Button
+            v-if="ctaContents[1]"
+            :cta="ctaContents[1]"
+            :url="ctaContents[1].url"
+            :is-external="ctaContents[1].link"
+            variant="secondary" 
+          />
+          <Button
+            v-if="ctaContents[0]"
+            :cta="ctaContents[0]"
+            :url="ctaContents[0].url"
+            :is-external="ctaContents[0].link"
+          />
         </div>
       </div>
     </section>
 
-    <!--Logo-->
-    <section class="container-fluid section-inverted">
-      <div class="row d-flex align-items-center justify-content-center">
-        <div class="col-md">
-          <div class="d-flex flex-column align-items-center justify-content-center">
-            <span class="text-light mb-4 text-subtitle">Worked with</span>
-            <div class="d-flex flex-wrap gap-4 justify-content-center">
-              <div v-for="logo in logos" :key="logo.url" class="logo-wrapper">
-                <img :src="logo.url" :alt="logo.alt" class="img-fluid logo" />
-                <span class="tooltip-text">{{ logo.name }}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="d-none d-md-block vl"></div>
-
-        <div class="col-md">
-          <div class="d-flex flex-column align-items-center justify-content-center">
-            <span class="text-light my-4 text-subtitle">Tools</span>
-            <div class="d-flex flex-wrap gap-4 justify-content-center">
-              <div v-for="tool in tools" :key="tool.url" class="logo-wrapper">
-                <img :src="tool.url" :alt="tool.alt" class="img-fluid logo" />
-                <span class="tooltip-text">{{ tool.name }}</span>
-              </div>
-            </div>
-          </div>
-        </div>
+    <section id="casestudy-section" class="py-20 max-w-352 mx-auto border-x-0 md:border-x border-slate-200 dark:border-(--color-border)">
+    <h2 class="font-display text-2xl md:text-3xl text-center mb-12">Case Studies</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 border-t border-b border-slate-200 dark:border-(--color-border) caseStudies">
+      <div 
+        v-for="(study, index) in studies" 
+        :key="study.id"
+        class="caseStudies p-8 border-b md:border-r border-slate-200 dark:border-(--color-border) md::nth-child[2n]:border-r-0 md:nth-last-child[-n+2]:border-b-0"
+      >
+        <CaseStudyList :caseStudy="study" />
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="container">
-      <div class="row">
-        <div class="col mt-2 pt-2">
-          <!--Case Studies-->
-          <span class="text-subtitle">Case Studies</span>
-          <div v-for="study in studies" :key="study.id" class="col">
-            <CaseStudyList :caseStudy="study" />
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="container-fluid section-inverted" id="bio-section">
-      <div class="row">
-        <div class="col">
-          <!--Profile Image-->
-          <ProfileImage />
-          <!--SubHeading-->
-          <div class="text-center mb-5">
-            <span class="my-4 text-light text-subtitle">All Roads Lead to Design.</span>
-            <p>
-              No matter the complexity, the path to a scalable result always circles back to
-              intentional design. Let’s build that together.
-            </p>
-          </div>
-          <!--CTA Button-->
-          <div class="bio-section">
-            <CTAButton
-              v-if="ctaContents[1]"
-              :cta="ctaContents[1]"
-              :url="ctaContents[1].url"
-              :isExternal="ctaContents[1].link"
-            />
-          </div>
-        </div>
-      </div>
-    </section>
   </main>
 </template>
 
@@ -116,9 +60,7 @@ import { reactive } from 'vue'
 import { studies } from '@/data/studies'
 
 import CaseStudyList from '../CaseStudy/CaseStudyList.vue'
-import ProfileImage from '../Layout/ProfileImage.vue'
-import Highlight from '../Layout/Highlight.vue'
-import CTAButton from '../Layout/CTAButton.vue'
+import Button from '../Layout/Button.vue'
 
 import chanchan from '/src/assets/clientLogos/chanchangames.webp'
 import excell from '/src/assets/clientLogos/excell.webp'
@@ -130,6 +72,10 @@ import miro from '/src/assets/toolLogos/miro.webp'
 import wireframecc from '/src/assets/toolLogos/wireframecc.webp'
 import rive from '/src/assets/toolLogos/rive.webp'
 import medibang from '/src/assets/toolLogos/medibang.webp'
+
+import { nextTick } from 'vue'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 const greetings = [
   {
@@ -183,18 +129,63 @@ const ctaContents = reactive([
 
 const highlightContents = reactive([
   {
-    primaryText: `Available for Work`,
+    primaryText: `Available for Full-time and Contractual Work`,
     secondaryText: ``,
     theme: `highlight-status`,
   },
 ])
+
+gsap.registerPlugin(ScrollTrigger)
+
+onMounted(async () => {
+  await nextTick()
+
+  gsap.set('.caseStudies', { 
+    autoAlpha: 0, 
+    y: 40 
+  })
+
+  ScrollTrigger.batch('.caseStudies', {
+  onEnter: batch => {
+    gsap.to(batch, {
+      autoAlpha: 1,
+      y: 0,
+      stagger: 0.15,
+      duration: 0.8,
+      ease: 'power2.out',
+      overwrite: 'auto'
+    })
+  },
+
+  onEnterBack: batch => {
+    gsap.to(batch, {
+      autoAlpha: 1,
+      y: 0,
+      stagger: 0.15,
+      duration: 0.8,
+      ease: 'power2.out',
+      overwrite: 'auto'
+    })
+  },
+
+  onLeaveBack: batch => {
+    gsap.to(batch, {
+      autoAlpha: 0,
+      y: 40,
+      stagger: 0.1,
+      duration: 0.5,
+      ease: 'power2.in',
+      overwrite: 'auto'
+    })
+  }
+})
+})
 </script>
 
 <style scoped>
-.language {
-  color: var(--text-accent);
-  font-size: var(--text-title);
-  text-align: center;
+.greeting{
+  color: var(--color-gray-400);
+  font-size: 32px;
 }
 
 .fade-enter-active,
@@ -214,18 +205,72 @@ const highlightContents = reactive([
   transform: translateY(-10px);
 }
 
-#bio-section {
-  clip-path: polygon(0% 0%, 50% 60px, 100% 0%, 100% 100%, 0% 100%);
-  margin-top: -60px;
-  padding-top: 100px;
-}
+/* ol {
+  all: unset;
+  display: grid;
+  grid-template-columns: repeat(34, 1fr);
+  grid-template-rows: repeat(21, 1fr);
+  list-style: none;
 
-@media only screen and (max-width: 600px) {
-  section.section-inverted {
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-    padding-left: 4rem;
-    padding-right: 4rem;
+  li {
+    aspect-ratio: 1 / 1;
+    background: var(--bg);
+    grid-area: var(--ga);
+    overflow: hidden;
+    position: relative;
+
+    &::after {
+      aspect-ratio: 1 / 1;
+      background-color: rgba(255, 255, 255, .3);
+      border-radius: 50%;
+      content: '';
+      display: block;
+      inset: 0;
+      position: absolute;
+      scale: 2;
+      translate: var(--tl);
+    }
+
+    &:nth-of-type(1) {
+      border: 1px solid #cad5e2;
+      --ga: 1 / 1 / 22 / 22;
+      --tl: 50% 50%;
+    }
+    &:nth-of-type(2) {
+      border: 1px solid #cad5e2;
+      --ga: 1 / 22 / 23 / 35;
+      --tl: -50% 50%;
+    }
+    &:nth-of-type(3) {
+      border: 1px solid #cad5e2;
+      --ga: 14 / 27 / 22 / 35;
+      --tl: -50% -50%;
+    }
+    &:nth-of-type(4) {
+      border: 1px solid #cad5e2;
+      --ga: 17 / 22 / 22 / 27;
+      --tl: 50% -50%;
+    }
+    &:nth-of-type(5) {
+      border: 1px solid #cad5e2;
+      --ga: 14 / 22 / 17 / 25;
+      --tl: 50% 50%;
+    }
+    &:nth-of-type(6) {
+      border: 1px solid #cad5e2;
+      --ga: 14 / 25 / 17 / 27;
+      --tl: -50% 50%;
+    }
+    &:nth-of-type(7) {
+      border: 1px solid #cad5e2;
+      --ga: 16 / 26 / 17 / 27;
+      --tl: -50% -50%;
+    }
+    &:nth-of-type(8) {
+      border: 1px solid #cad5e2;
+      --ga: 16 / 25 / 17 / 26;
+      --tl: 50% -50%;
+    }
   }
-}
+} */
 </style>

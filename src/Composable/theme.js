@@ -2,20 +2,31 @@ import { ref, watch } from 'vue'
 
 const initialTheme = () => {
   const saved = localStorage.getItem('isSavedDark')
-  return saved ? JSON.parse(saved) : false
+  return saved ? JSON.parse(saved) : true
 }
 
-const isDark = ref(initialTheme())
-document.documentElement.setAttribute('data-bs-theme', isDark.value ? 'dark' : 'light')
+export const isDark = ref(initialTheme())
+
+const applyTheme = (val) => {
+  if (val) {
+    document.documentElement.classList.add('dark')
+    document.documentElement.classList.remove('light')
+  } else {
+    document.documentElement.classList.remove('dark')
+    document.documentElement.classList.add('light')
+  }
+}
+
+applyTheme(isDark.value)
 
 watch(isDark, (val) => {
   localStorage.setItem('isSavedDark', JSON.stringify(val))
+  applyTheme(val)
 })
 
 export function useTheme() {
   const toggleTheme = () => {
     isDark.value = !isDark.value
-    document.documentElement.setAttribute('data-bs-theme', isDark.value ? 'dark' : 'light')
   }
 
   return { isDark, toggleTheme }

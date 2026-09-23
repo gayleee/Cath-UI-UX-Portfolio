@@ -8,31 +8,16 @@
             This link is a bit lost in the sauce! We couldn't find the page you requested.
           </p>
         </div>
-        <div v-for="content in ctaContents" :key="content.label">
-          <CTAButton
-            v-if="ctaContents[0]"
-            :cta="ctaContents[0]"
-            :url="ctaContents[0].url"
-            :isExternal="ctaContents[0].link"
-          ></CTAButton>
-        </div>
+        <SecondaryButton />
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import CTAButton from './CTAButton.vue'
-import { reactive } from 'vue'
 import { useTheme } from '@/Composable/theme'
 
-const ctaContents = reactive([
-  {
-    label: `Return to Home`,
-    url: `/`,
-    link: false,
-  },
-])
+import SecondaryButton from './SecondaryButton.vue'
 
 const { isDark } = useTheme()
 </script>
