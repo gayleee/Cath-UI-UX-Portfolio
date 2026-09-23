@@ -3,7 +3,7 @@
     <div class="max-w-352 mx-auto w-full flex items-center justify-between py-3 px-6 md:px-12">
       <router-link class="flex items-center justify-center" to="/">
         <img src="/src/assets/icon.svg" alt="icon" class="mr-2 w-6 h-6 brightness-0 dark:brightness-100 transition-all" />
-        <span class="font-body">cath_ux/ui</span>
+        <span class="font-body">cath_UX/UI</span>
       </router-link>
 
     <nav class="hidden md:flex items-center gap-6">
