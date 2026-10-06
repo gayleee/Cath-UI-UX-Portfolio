@@ -14,7 +14,7 @@
       <!-- add this here in this div if custom-bg will be used: relative z-10 and add overflow-hidden in the hero section -->
       <div class="flex flex-col max-w-5xl gap-6 pb-12">
         <h1 class="text-hero-display font-display text-5xl md:text-[80px] lg:text-[120px] leading-none text-balance tracking-tight">
-          UX/UI Designer.
+          UI/UX Portfolio.
         </h1>
         <p class="text-slate-500 text-lg md:text-xl max-w-2xl">
           Delivering production-ready designs, for different industries and audiences.

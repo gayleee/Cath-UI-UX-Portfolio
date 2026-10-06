@@ -1,13 +1,13 @@
 <template>
-  <div class="flex w-full min-h-dvh justify-between">
-    <aside class="relative max-lg:hidden">
-      <div class="sticky top-8 h-[calc(100vh-3.5rem)] w-full overflow-y-auto p-12">
+  <div class="flex w-full min-h-screen justify-between overflow-x-hidden">
+    <aside class="relative max-lg:hidden w-64 shrink-0 border-r border-slate-300 dark:border-neutral-800">
+      <div class="fixed top-20 left-8 w-48 max-h-[calc(100vh-6rem)] overflow-y-auto z-10">
         <nav>
           <ul class="flex flex-col gap-8 text-sm border-l border-slate-200 dark:border-slate-800">
             <li v-for="item in navItems" :key="item.id">
               <a
                 :href="`#${item.id}`"
-                @click="activeSection = item.id"
+                @click.prevent="scrollToSection(item.id)"
                 class="block -ml-px border-l-2 pl-4 transition-all duration-150 font-display"
                 :class="
                   activeSection === item.id
@@ -23,58 +23,49 @@
       </div>
     </aside>
 
-    <main class="relative min-w-0 gap-12">
-      
-      <div v-if="currentStudy" class="mx-auto grid w-full max-w-5xl grid-cols-1 gap-4 py-24" id="overview">
+    <main class="relative min-w-0 flex-1 px-4 pt-20 sm:px-6 sm:pt-24 lg:px-8 lg:pt-0">
+      <div v-if="currentStudy" class="mx-auto grid w-full max-w-5xl grid-cols-1 gap-4 py-8 md:py-24" id="overview">
         <Header :heading="currentStudy.name" class="font-display" />
-        <div class="flex flex-wrap gap-2 tags-container">
-          <div v-for="(item, index) in currentStudy.tag" :key="index">
-            <Tag :label="item.name" :category="item.category" />
-          </div>
-        </div>
-        <Introduction :intro="currentStudy.desc" />
-        <IntroImage :introImage="currentStudy.introData" />
+
+        <Introduction :description="currentStudy.description" />
+        <IntroImage :intro="currentStudy?.intro" />
 
         <div class="flex flex-row w-full flex-wrap justify-between gap-4 items-center">
           <div class="flex flex-row gap-4 w-full grow">
             <Button
-              v-if="!currentStudy.calloutData.isNDA"
-              :cta="currentStudy.ctaData"
-              :url="currentStudy.url"
-              :isExternal="currentStudy.link"
+              v-if="!currentStudy.callout?.isNDA && currentStudy.cta"
+              :label="currentStudy.cta.label"
+              :url="currentStudy.cta.url"
+              :is-external="currentStudy.cta.isExternal"
             />
-            <Callout 
-              v-else 
-              :callout="currentStudy.calloutData.ndaMessage" 
-              class="w-full" 
-            />
+            <Callout :callout="currentStudy.callout" />
           </div>
         </div>
 
-        <div class="py-16" id="role">
+        <div v-if="currentStudy.roles?.length" class="py-12 md:py-16" id="role">
           <h2 class="text-subtitle-display font-display pb-4">My Role and Tools</h2>
           <div class="overflow-x-auto w-full border border-slate-200 dark:border-neutral-800">
-            <table class="w-full min-w-600px text-left text-sm border-collapse">
+            <table class="w-full min-w-150 text-left text-sm border-collapse">
               <thead>
                 <tr class="bg-slate-50 dark:bg-neutral-900/50 border-b border-slate-200 dark:border-neutral-800 text-slate-500 dark:text-slate-400">
                   <th class="py-3 px-4 font-body">Role</th>
                   <th class="py-3 px-4 font-body">Tasks & Responsibilities</th>
-                  <th class="py-3 px-4 font-body">Tools</th>
+                  <th class="py-3 px-4 font-body">Tools/Technologies</th>
                 </tr>
               </thead>
               <tbody class="divide-y divide-slate-200 dark:divide-neutral-800">
                 <tr 
-                  v-for="(item, index) in currentStudy.roleDesc" 
-                  :key="index"
+                  v-for="(roleItem, index) in currentStudy.roles" 
+                  :key="roleItem.title || index"
                   class="align-top hover:bg-slate-50/50 dark:hover:bg-neutral-900/30 transition-colors"
                 >
                   <td class="py-4 px-4 text-(--brand-color) dark:text-(--brand-color) whitespace-nowrap font-display">
-                    {{ item.role }}
+                    {{ roleItem.title }}
                   </td>
                   <td class="py-4 px-4 text-slate-600 dark:text-slate-300">
                     <ul class="space-y-1.5">
                       <li 
-                        v-for="(taskItem, tIndex) in item.task" 
+                        v-for="(taskItem, tIndex) in roleItem.tasks" 
                         :key="tIndex" 
                         class="flex items-start gap-2"
                       >
@@ -86,7 +77,7 @@
                   <td class="py-4 px-4">
                     <div class="flex flex-wrap gap-1.5">
                       <span 
-                        v-for="(tool, toolIndex) in item.tools" 
+                        v-for="(tool, toolIndex) in roleItem.tools" 
                         :key="toolIndex"
                         class="inline-flex font-body items-center px-2.5 py-1 bg-neutral-100 text-slate-700 border border-neutral-200 dark:bg-neutral-800 dark:text-slate-300 dark:border-neutral-700"
                       >
@@ -99,15 +90,54 @@
             </table>
           </div>
         </div>
-        
+
+        <div v-for="section in currentStudy.sections" :key="section.id">
+          <div 
+            v-if="section.id !== 'overview'"
+            :id="section.id" 
+            class="py-12 border-t border-slate-200 dark:border-neutral-800"
+          >
+            <h2 v-if="section.title" class="text-subtitle-display font-display pb-4">
+              {{ section.title }}
+            </h2>
+            <p v-if="section.description" class="font-body whitespace-pre-line leading-relaxed mb-6">
+              {{ section.description }}
+            </p>
+
+            <div v-if="section.images?.length" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <figure v-for="(img, imgIdx) in section.images" :key="imgIdx" class="flex flex-col">
+                <img :src="img.url" :alt="img.alt || 'Section image'" class="w-full object-cover" />
+                <figcaption v-if="img.caption" class="text-xs text-slate-500 mt-4">
+                  {{ img.caption }}
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+
+        <div v-if="currentStudy.cards?.length" id="reflections" class="py-12">
+          <h2 class="text-subtitle-display font-display pb-4">Reflections</h2>
+          <div class="flex flex-col gap-4 py-8">
+            <div 
+              v-for="(card, cardIdx) in currentStudy.cards" 
+              :key="cardIdx" 
+              class="p-6 border border-slate-200 dark:border-neutral-800 bg-slate-50/50 dark:bg-neutral-900/30"
+            >
+              <h3 v-if="card.title" class="font-display font-medium text-lg mb-2">{{ card.title }}</h3>
+              <p v-if="card.description" class="text-sm font-body text-slate-600 dark:text-slate-300">{{ card.description }}</p>
+            </div>
+          </div>
+        </div>
+
         <div class="w-full mx-auto">
           <Pagination />
         </div>
       </div>
     </main>
 
+    <!-- Right Aside: Fixed panel locked to screen top right -->
     <aside class="relative max-lg:hidden w-56 shrink-0 border-l border-slate-300 dark:border-neutral-800">
-      <div class="sticky top-12 p-4 flex flex-col gap-4">
+      <div class="fixed top-20 right-4 w-48 flex flex-col gap-4 max-h-[calc(100vh-6rem)] overflow-y-auto z-10">
         <p class="text-slate-400 dark:text-slate-200 font-display">
           Up Next
         </p>
@@ -142,6 +172,9 @@ import Highlight from '../Layout/Highlight.vue'
 import Content from '../Layout/Content.vue'
 import Modal from '../Layout/Modal.vue'
 
+// console.log(route.params)
+// console.log(currentStudy.roleData.theme)
+
 const route = useRoute()
 const studySlug = route.params.slug
 
@@ -152,47 +185,84 @@ const otherCaseStudies = computed(() => {
   return studies.filter((study) => study.slug !== currentStudy.slug)
 })
 
-// console.log(route.params)
-// console.log(currentStudy.roleData.theme)
-
-function openModal(img) {
-  activeItem.value = {
-    imageUrl: img.contentUrl,
-    imageAlt: img.contentAlt,
-    name: img.contentAlt,
-  }
-}
-
 const activeSection = ref('overview')
 const isManualScrolling = ref(false)
+let scrollTimeout = null
 
-const navItems = [
-  { id: 'overview', label: 'Overview' },
-  { id: 'role', label: 'Role & tools' },
-  { id: 'problem', label: 'The Problem' },
-  { id: 'solution', label: 'The Solution' },
-  { id: 'reflections', label: 'Reflections' },
-]
+const navItems = computed(() => {
+  if (!currentStudy) return []
+
+  const items = [{ id: 'overview', label: 'Overview' }]
+
+  if (currentStudy.roles?.length) {
+    items.push({ id: 'role', label: 'Role & Tools' })
+  }
+
+  if (currentStudy.sections?.length) {
+    currentStudy.sections.forEach((sec) => {
+      if (sec.id !== 'overview') {
+        items.push({
+          id: sec.id,
+          label: sec.sectionName || sec.title || sec.id
+        })
+      }
+    })
+  }
+
+  if (currentStudy.cards?.length) {
+    items.push({ id: 'reflections', label: 'Reflections' })
+  }
+
+  return items
+})
 
 const scrollToSection = (id) => {
   activeSection.value = id
   isManualScrolling.value = true
 
+  if (scrollTimeout) clearTimeout(scrollTimeout)
+
   const element = document.getElementById(id)
   if (element) {
     element.scrollIntoView({ behavior: 'smooth' })
   }
-  setTimeout(() => {
+
+  scrollTimeout = setTimeout(() => {
     isManualScrolling.value = false
   }, 800)
 }
 
 let observer = null
 
+const handleScroll = () => {
+  if (isManualScrolling.value) return
+
+  if (window.scrollY < 100) {
+    activeSection.value = 'overview'
+    return
+  }
+
+  const totalHeight = document.documentElement.scrollHeight
+  const scrollPosition = window.innerHeight + window.scrollY
+
+  if (scrollPosition >= totalHeight - 50) {
+    const lastItem = navItems.value[navItems.value.length - 1]
+    if (lastItem) {
+      activeSection.value = lastItem.id
+    }
+  }
+}
+
 onMounted(() => {
+  window.addEventListener('scroll', handleScroll, { passive: true })
+
   observer = new IntersectionObserver(
     (entries) => {
       if (isManualScrolling.value) return
+
+      const totalHeight = document.documentElement.scrollHeight
+      const scrollPosition = window.innerHeight + window.scrollY
+      if (window.scrollY < 100 || scrollPosition >= totalHeight - 50) return
 
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -201,18 +271,21 @@ onMounted(() => {
       })
     },
     { 
-      rootMargin: '-10% 0px -70% 0px' 
+      rootMargin: '-15% 0px -60% 0px',
+      threshold: 0.1
     }
   )
 
-  navItems.forEach((item) => {
+  navItems.value.forEach((item) => {
     const el = document.getElementById(item.id)
     if (el) observer.observe(el)
   })
 })
 
 onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll)
   if (observer) observer.disconnect()
+  if (scrollTimeout) clearTimeout(scrollTimeout)
 })
 </script>
 

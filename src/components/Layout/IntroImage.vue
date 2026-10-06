@@ -1,8 +1,8 @@
 <template>
-  <div class="intro-container container flex justify-center">
+  <div v-if="intro" class="intro-container container flex justify-center">
+    <!-- Video Element -->
     <video
-      v-if="isVideo(introImage.introUrl)"
-      :src="introImage.introUrl || introImage.introMp4"
+      v-if="hasVideo"
       class="intro-img"
       autoplay
       loop
@@ -10,14 +10,16 @@
       playsinline
       fetchpriority="high"
     >
-      <source v-if="introImage.introUrl" :src="introImage.introUrl" type="video/webm" />
-      <source v-if="introImage.introMp4" :src="introImage.introMp4" type="video/mp4" />
+      <source v-if="intro.webmUrl" :src="intro.webmUrl" type="video/webm" />
+      <source v-if="intro.mp4Url" :src="intro.mp4Url" type="video/mp4" />
+      <source v-if="intro.url && isVideoPath(intro.url)" :src="intro.url" />
     </video>
 
+    <!-- Image Element -->
     <img
-      v-else
-      :src="introImage.introUrl"
-      :alt="introImage.introAlt || 'Case Study Intro'"
+      v-else-if="intro.url"
+      :src="intro.url"
+      :alt="intro.alt || 'Case Study Intro'"
       class="intro-img"
       fetchpriority="high"
     />
@@ -25,17 +27,30 @@
 </template>
 
 <script setup>
+import { computed } from 'vue'
+
 const props = defineProps({
-  introImage: {
+  intro: {
     type: Object,
-    required: true,
+    default: () => ({}),
   },
 })
 
-const isVideo = (url) => {
-  if (!url) return false
-  return /\.(webm|mp4)$/i.test(url)
+// Helper to check standard file extensions
+const isVideoPath = (path) => {
+  if (typeof path !== 'string') return false
+  return /\.(webm|mp4)$/i.test(path)
 }
+
+// Determines if any video source is present
+const hasVideo = computed(() => {
+  if (!props.intro) return false
+  return (
+    Boolean(props.intro.webmUrl) ||
+    Boolean(props.intro.mp4Url) ||
+    isVideoPath(props.intro.url)
+  )
+})
 </script>
 
 <style scoped>

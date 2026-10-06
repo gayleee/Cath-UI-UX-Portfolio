@@ -1,16 +1,16 @@
 <template>
-  <div>
+  <div v-if="description">
     <p class="font-body whitespace-pre-line leading-relaxed">
-      {{ intro }}
+      {{ description }}
     </p>
   </div>
 </template>
 
 <script setup>
 const props = defineProps({
-  intro: {
+  description: {
     type: String,
-    required: true,
+    default: '',
   },
 })
 </script>

@@ -6,7 +6,7 @@
       :aria-label="'View full case study for ' + caseStudy.name"
     >
       <video
-        :poster="caseStudy.thumbnailUrl"
+        :poster="caseStudy.thumbnail?.url"
         autoplay
         loop
         muted
@@ -14,34 +14,41 @@
         preload="none"
         class="thumbnail-video"
       >
-        <source :src="caseStudy.animationWebm" type="video/webm" />
-        <source :src="caseStudy.animationMp4" type="video/mp4" />
+        <source v-if="caseStudy.thumbnail?.webmUrl" :src="caseStudy.thumbnail.webmUrl" type="video/webm" />
+        <source v-if="caseStudy.thumbnail?.mp4Url" :src="caseStudy.thumbnail.mp4Url" type="video/mp4" />
         <track kind="captions" src="/captions.vtt" srclang="en" label="English" />
       </video>
     </router-link>
 
     <div class="gap-4">
-      <p>
+      <p v-if="caseStudy.length || formattedReadTime">
         <small class="py-2">
-          <span class="study-length-text">{{ caseStudy.length }}</span>
-          <span class="read-time-text">{{ caseStudy.readTime }}</span>
+          <span v-if="caseStudy.length" class="study-length-text">{{ caseStudy.length }}</span>
+          <span v-if="formattedReadTime" class="read-time-text">{{ formattedReadTime }}</span>
         </small>
       </p>
+
       <router-link
         :to="{ name: 'CaseStudy', params: { slug: caseStudy.slug } }"
       >
         <span class="study-name-text py-2">{{ caseStudy.name }}</span>
       </router-link>
 
-      <!-- <p class="mb-3 text-body">{{ caseStudy.desc }}</p> -->
+      
+      <!-- <p v-if="caseStudy.description" class="mb-3 text-body">{{ caseStudy.description }}</p>
 
-      <!-- <div class="flex flex-wrap gap-2 mb-2 tags-container">
-        <div v-for="(item, index) in caseStudy.tag" :key="index">
-          <Tag :label="item.name" :category="item.category" />
-        </div>
-      </div> -->
+      
+      <div v-if="caseStudy.tags?.length" class="flex flex-wrap gap-2 mb-2 tags-container">
+        <Tag 
+          v-for="(tag, index) in caseStudy.tags" 
+          :key="tag.name || index" 
+          :label="tag.name" 
+          :category="tag.category" 
+        />
+      </div>
 
-      <!-- <div v-if="caseStudy.award" class="flex gap-2 mt-2 py-2 ps-2 items-center award-container">
+      
+      <div v-if="caseStudy.award" class="flex gap-2 mt-2 py-2 ps-2 items-center award-container">
         <Trophy size="16" />
         <small class="award-text">{{ caseStudy.award }}</small>
       </div> -->
@@ -50,14 +57,22 @@
 </template>
 
 <script setup>
-import { Trophy } from '@lucide/vue';
-import Tag from '../Layout/Tag.vue'
+import { computed } from 'vue'
+// import { Trophy } from '@lucide/vue'
+// import Tag from '../Layout/Tag.vue'
 
 const props = defineProps({
   caseStudy: {
     type: Object,
     required: true,
   },
+})
+
+const formattedReadTime = computed(() => {
+  if (typeof props.caseStudy.readTimeMinutes === 'number') {
+    return ` • ${props.caseStudy.readTimeMinutes} min read`
+  }
+  return props.caseStudy.readTime || ''
 })
 </script>
 
@@ -89,7 +104,7 @@ const props = defineProps({
   line-height: 1.2;
 }
 
-.award-container{
+.award-container {
   background-color: var(--color-info-bg);
   border-left: 4px solid var(--color-info-border);
 }
