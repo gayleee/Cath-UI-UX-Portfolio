@@ -8,7 +8,7 @@
           About Me.
         </h1>
         <p class="text-slate-500 md:text-xl max-w-2xl">
-          Hello! I’m Cath. I am a recent graduate from the <span>Polytechnic University of the Philippines</span> with a bachelor's degree in information technology.<br><br>My UI/UX journey formally began right in this university, when my first web project turned a spark of curiosity—asking 'why' things are built the way they are—into a genuine passion. Since then, I've explored different industries, taught myself to build design systems, and continually challenged myself to solve real-world problems for varied users and contexts.
+          Hello! I’m Cath. I am a recent graduate from the <span>Polytechnic University of the Philippines</span> with a bachelor's degree in information technology.<br><br>My UI/UX journey formally began right in this university, when my first web project turned a spark of curiosity into a genuine passion to know the 'whys' behind design decisions. Since then, I've explored different industries, taught myself to build design systems, and continually challenged myself to solve real-world problems for varied users and contexts.
           <!-- <br /><br />Today, I am actively seeking a
           role where I can contribute to building the foundation and recognition of a product.
           If you're looking for a designer, drop me a message! -->

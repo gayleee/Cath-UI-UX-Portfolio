@@ -2,7 +2,8 @@
   <header class="fixed top-0 left-0 right-0 z-50 border-b">
     <div class="max-w-352 mx-auto w-full flex items-center justify-between py-3 px-6 md:px-12">
       <router-link class="flex items-center justify-center" to="/">
-        <img src="/src/assets/icon.svg" alt="icon" class="mr-2 w-6 h-6 brightness-0 dark:brightness-100 transition-all" />
+        <img src="/src/assets/favicon.svg" alt="icon" class="mr-2 w-6 h-6 transition-all" />
+        <!-- <span>Use this if icon will change again: class="mr-2 w-6 h-6 brightness-0 dark:brightness-100 transition-all"</span> -->
         <span class="font-body">Cath_UI/UX</span>
       </router-link>
 

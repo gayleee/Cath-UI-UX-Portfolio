@@ -7,6 +7,10 @@ import iskolarExpressThumbnail from '/src/assets/thumbnails/iskolarExpressThumbn
 import iskolarExpressOverview from '/src/assets/iskolarExpressAssets/iskolarExpressOverview.webp'
 import iskolarExpressMain from '/src/assets/iskolarExpressAssets/iskolarExpressMain.webp'
 import iskolarExpressAdminLogin from '/src/assets/iskolarExpressAssets/iskolarExpressAdminLogin.webp'
+import iskolarExpressColor from '/src/assets/iskolarExpressAssets/iskolarColor.webp'
+import iskolarExpressHeading from '/src/assets/iskolarExpressAssets/iskolarHeading.webp'
+import iskolarExpressBody from '/src/assets/iskolarExpressAssets/iskolarBody.webp'
+import iskolarExpressAsset from '/src/assets/iskolarExpressAssets/iskolarAsset.webp'
 
 import ootuWireframes from '@/assets/ootuAssets/ootuWireframes.webp'
 import ootuOOUX from '@/assets/ootuAssets/ootuOOUX.webp'
@@ -24,7 +28,10 @@ import niicheFeatures from '@/assets/niicheAssets/niicheFeatures.webp'
 import niicheDraft from '@/assets/niicheAssets/niicheDraft.webp'
 import niicheFinalDraft from '@/assets/niicheAssets/niicheFinalDraft.webp'
 import niicheHero from '@/assets/niicheAssets/niicheHero.webp'
-import niicheCommunity from '@/assets/niicheAssets/niicheCommunity.webp'
+import niicheFeed from '@/assets/niicheAssets/niicheFeed.webp'
+import niicheAsset from '@/assets/niicheAssets/niicheAsset.webp'
+import niicheFont from '@/assets/niicheAssets/niicheFont.webp'
+import niicheColor from '@/assets/niicheAssets/niicheColor.webp'
 
 import excellHero from '@/assets/excellAssets/excellHero.webp'
 import excellHero1 from '@/assets/excellAssets/excellHero1.webp'
@@ -52,7 +59,7 @@ export const studies = [
     id: 0,
     slug: 'iskolar-express-egov-hackathon-2026',
     name: 'Iskolar Express - eGov Hackathon 2026',
-    description: "Our team's eGov Hackathon solution—Iskolar Express, a centralized web-app scholarship management platform that streamlines stipend processing from submission to release by allowing students to find a suitable scholarship for their needs and conveniently apply and track their applications online.\n\nThe event was a two-day hackathon, held  at the SMX Convention Center Aura in Taguig City, Philippines, and was open to all Filipino tech talents. Our team was composed of 5 members, and each role had one person assigned (e.g., Frontend Developer, Backend Developer, Quality Assurance, etc.). I was the sole UI/UX designer on the team.",
+    description: "Our team's eGov Hackathon solution: Iskolar Express, a centralized web-app scholarship management platform that streamlines stipend processing from submission to release by allowing students to find a suitable scholarship for their needs and conveniently apply and track their applications online. The platform is designed to be user-friendly, efficient, and accessible, ensuring that students can easily navigate the application process and receive timely updates on their scholarship status.\n\nThe event was held at the SMX Convention Center Aura in Taguig City, Philippines, and was open to all Filipino tech talents. Our team was composed of 5 members, and each role had one person assigned (e.g., Frontend Developer, Backend Developer, Quality Assurance, etc.). I was the sole UI/UX designer on the team.",
     readTimeMinutes: 5,
     length: 'July 2026',
     award: '',
@@ -102,8 +109,8 @@ export const studies = [
     sections: [
       {
         id: 'project',
-        title: 'Background & Design Process',
-        description: "I was tasked with designing role-tailored UI where features and permissions are tied to roles and workflows within a strict, single-sprint timeframe (~1–2 weeks).\n\nFrom the lessons learned from past projects, I shifted away from assumption-led decisions. Before jumping into wireframes, we conducted a rapid, informal UX benchmark of competitor platforms and adjacent systems sharing our core functional principles; adhering to a fundamental UX design principle—Jakob's Law.\n\n'Users spend most of their time on other sites. This means that users prefer your site to work the same way as all the other sites they already know' (Yablonski, n.d., Key Takeaways section, para. 1). This informed our design decisions, ensuring that our solution was both innovative and aligned with established usability norms, one of these are:\n\n1.) Common patterns and user expectations - Instead of reinventing interaction patterns, we identified common conventions across these systems. By adopting established UX patterns, we ensured that users across all 4 roles could navigate the platform with zero learning curve.",
+        title: 'Design Process',
+        description: "I was tasked with designing role-tailored UI where features and permissions are tied to roles and workflows within a strict, single-sprint timeframe (1 week).\n\nFrom the lessons learned from past projects, I shifted away from assumption-led decisions. Before jumping into wireframes, we conducted a rapid, informal UX benchmark of competitor platforms and adjacent systems sharing our core functional principles; adhering to a fundamental UX design principle—Jakob's Law.\n\n'Users spend most of their time on other sites. This means that users prefer your site to work the same way as all the other sites they already know' (Yablonski, n.d., Key Takeaways section, para. 1). This informed our design decisions, ensuring that our solution was both innovative and aligned with established usability norms, one of them is:\n\n1.) Common patterns and user expectations - Instead of reinventing interaction patterns, we identified common conventions across these systems. By adopting established UX patterns, we ensured that users across all roles could navigate the platform with zero learning curve.",
         images: [
           {
             url: iskolarExpressAdminLogin,
@@ -117,20 +124,52 @@ export const studies = [
           },
         ],
       },
+      {
+        id: 'decisions',
+        title: 'Design Decisions',
+        description: "Guided by accessibility standards, blue was selected as our primary color. The chosen hexcode scored a 5.42:1 contrast ratio against white backgrounds, comfortably exceeding the WCAG 2.1 AA minimum threshold of 4.5:1.\n\nFor our typography, we selected Noto Sans as the heading typeface to ensure clarity and high readability and distinction between headings and body text. On the other hand, we selected Merriweather Sans as our primary body typeface for its bolder lines making it highly legible against different contents.\n\nRegarding our assets, I went with an abstract visual style instead of relying on generic stock illustration libraries, differentiating our platform from the generic stock illustrations common across existing apps. I designed these custom assets directly in Figma and Affinity Designer.",
+        images: [
+          {
+            url: iskolarExpressColor,
+            alt: 'Iskolar Express Color Palette',
+            // caption: 'Figure 1: Color Palette',
+          },
+          {
+            url: iskolarExpressHeading,
+            alt: 'Iskolar Express Heading Text',
+            // caption: 'Figure 1.1: Heading Text Font',
+          },
+          {
+            url: iskolarExpressBody,
+            alt: 'Iskolar Express Body Text',
+            // caption: 'Figure 1.1: Body Text Font',
+          },
+          {
+            url: iskolarExpressAsset,
+            alt: 'Iskolar Express Asset',
+            // caption: 'Figure 1.1: Asset',
+          },
+        ],
+      },
+      {
+        id: 'results',
+        title: 'Impacts & Outcomes',
+        description: "While the platform did not receive an award, our team recognized the value of solving a real-world problem. The problem may be simple, but its persistence in making bureaucratic processes difficult was evident and calls for an attention, building a system that makes these processes more efficient, centralized, and personalized ensures that we are addressing the problem to its core.\n\nThe project not only showcased our technical skills but also highlighted our ability to work collaboratively under pressure and deliver within a limited time.",
+      },
     ],
     
     cards: [
       {
-        title: 'Preserving UX Amidst Expanding Complexity',
-        description: 'When shifting requirements expanded our feature set late in the project, I prevented layout issues and revisions by establishing modular UI components and reusable layout structures. This enabled our team to seamlessly integrate new feature requests and complex data inputs without redesigning core layouts. I ensured that the final application remained intuitive and readable for users despite the increased product scope as  the adapting layouts are able to absorb high data density on the fly.',
+        title: 'How Systemic Habits Saved My Workflow',
+        description: 'When shifting project requirements expanded our roles and feature set, my experience from past projects became a major asset. Rather than spending time manually adjusting individual screens, I applied scalable design system principles (specifically practicing Atomic Design) to establish modular UI components and flexible layout structures. This allowed our team to seamlessly accommodate data and new features without redesigning core layouts. This reinforces the power of building adaptable interfaces even in the face of limited timeframe.',
       },
     ],
   },
   {
     id: 1,
     slug: 'niiche-community-platform',
-    name: 'Niche Community Platform',
-    description: "A web-based community platform for niche interests, connecting like-minded individuals and fostering meaningful interactions. A 3-day timeline (online) competition with predefined branding guidelines with professional judges, held right after the end of my internship. The event brought together information technology students from all year levels.",
+    name: 'NIICHE - Community Platform',
+    description: "A web-based community platform for niche interests, connecting like-minded individuals. A 3-day hybrid competition with predefined guidelines with professional judges, held right after the end of my internship. The event brought together information technology students from all year levels in our university.\n\nThe goal is to create a platform that allows users to discover and connect with others who share their interests, hobbies, or passions. The platform provides a space for users to create and join communities, share content, and engage in discussions related to their niche interests.\n\nThe primary audience are Gen Z, who are known for their tech-savviness and preference for online communities. The criteria for evaluation included usability, design aesthetics, and must specifically adhere to Gestalt principles, which are a set of psychological principles that explain how humans perceive and organize visual information.",
     readTimeMinutes: 5,
     length: 'June 2025',
     award: 'Champion, ISKOnnovation: EUREKA 2025 UI Design Competition',
@@ -139,7 +178,7 @@ export const studies = [
       url: niicheThumbnail,
       mp4Url: '/animations/niicheAnimation.webm',
       webmUrl: '/animations/niicheAnimation.webm',
-      alt: `Niche Community Platform`,
+      alt: `NIICHE - Community Platform`,
     },
 
     intro: {
@@ -173,8 +212,8 @@ export const studies = [
     sections: [
       {
         id: 'project',
-        title: 'Background & Design Process',
-        description: "High user engagement is the goal and discoverability is an essential factor for a content-rich platform, and with that in mind, I focused on solving two core problems: simplifying visual and information hierarchy and reducing information overload.\n\nTo tackle this, I first approached the handling of metadata and navigation as compactly and clearly as possible; see Figure 1. At first, I placed the search function within the top navigation bar, serving as a global search. However, To adhere to the single-page constraint, I prioritized contextual proximity over generic global placement.\n\nSince the feed is the core content container on the page, moving Search and Filter directly above the feed visually communicates to the user that their query immediately manipulates the content below it. It reduces cognitive distance by keeping control inputs right where the data renders.",
+        title: 'Design Process',
+        description: "High user engagement is the goal and discoverability is an essential factor for a content-rich platform, and with that in mind, I focused on solving two core problems: simplifying visual and information hierarchy and reducing information overload.\n\nTo tackle this, I first approached the handling of metadata and navigation as compactly and clearly as possible; see Figure 1. At first, I placed the search function within the top navigation bar, serving as a global search. However, To adhere to the single-page requirement, I prioritized contextual proximity over generic global placement.\n\nSince the feed is the core content container on the page, moving Search and Filter directly above the feed visually communicates to the user that their query immediately manipulates the content below it. It reduces cognitive distance by keeping control inputs right where the data renders.",
         images: [
           {
             url: niicheDraft,
@@ -188,6 +227,33 @@ export const studies = [
           },
         ],
       },
+      {
+        id: 'decisions',
+        title: 'Design Decisions',
+        description: "To position the platform as a welcoming, community-first space, I built a visual identity around warmth and approachability, Cranberry red was chosen as the primary color. It was paired with a muted palette of colors to create a visually appealing and cohesive design. The typography are Sora for heading text and Inter for body text were selected to ensure simplicity, readability, and accessibility across different devices.\n\nThe platform's visual identity was further reinforced through the use of free to illustrations available in Figma Community. This approach helped with highlighting important elements that matters in the sea of content and  ultimately, it resonates with the target audience.",
+        images: [
+          {
+            url: niicheFont,
+            alt: 'Font Pairing',
+            // caption: 'Figure 2: Showcasing what the platform is about',
+          },
+          {
+            url: niicheColor,
+            alt: 'Primary Color',
+            // caption: 'Figure 2.1: Color Palette',
+          },
+          {
+            url: niicheAsset,
+            alt: 'Representation of the Platform',
+            caption: 'Figure 2: Logo prototype animation representing different interests reflecting the platform’s purpose',
+          },
+          {
+            url: niicheFeed,
+            alt: 'The Final Feed Page',
+            caption: 'Figure 2.1: What the Final Feed Page Looks Like',
+          },
+        ],
+      },
     ],
     
     cards: [
@@ -196,12 +262,8 @@ export const studies = [
         description: 'In a time-constrained sprint, moving search to the feed felt like a logical shortcut to keep interactions tied to content. Looking back, adhering to Jakob’s Law—keeping search in its conventional top-navbar home—would have reduced initial friction. This trade-off taught me the importance of weighing contextual convenience against user mental models, a balance I now test early in my workflow.',
       },
       {
-        title: 'Navigating Hard Constraints',
-        description: 'Balancing a strict single-page event rule alongside a rapid delivery timeline forced me to make fast design hypotheses. While elevating "Create Post" into a fixed side panel solved persistent access, it reinforced how crucial early layout validation is. This experience laid the foundation for how I now approach design systems: moving from speed-driven assumptions to evidence-backed iteration.',
-      },
-      {
         title: 'A Benchmark, Not a Ceiling',
-        description: 'Winning the event was a rewarding milestone, but the real value came from analyzing my decisions afterward. Recognizing where my early design intuition leaned on assumptions rather than user validation showed me how much my craft has matured. I treat every project—past or present—as one step in a continuous learning process.',
+        description: 'Winning the event was a rewarding milestone, but the real value came from analyzing my decisions afterward. Recognizing where my early design intuition leaned on assumptions rather than user validation showed me how much my craft has matured. I treat every project as one step in a continuous learning process.',
       },
     ],
   },
@@ -260,7 +322,7 @@ export const studies = [
     sections: [
       {
         id: 'project',
-        title: 'Background & Design Process',
+        title: 'Design Process',
         description: "The original website suffered from accumulated technical debt and outdated design patterns that degraded both user experience and search performance. Across the platform, key information was buried in static content, making simple content updates tedious and severely limiting overall usability.\n\nOne of them is the original Projects page, which is a critical proof point for the company's capabilities, utilized a CMS-driven carousel displaying project images with limited metadata; see Figure 1. This structure suffered from a major issue:\n\n1.) Accessibility and SEO best practices: Relying solely on images to convey project information—a “burned-in” or “baked-in” text (text is part of the image itself and has no alternative text)—creates accessibility barriers and risks a poor user experience on slow connections. Additionally, this information blocks the visual assets and prevents the visitor from viewing the whole image, and the text heavily relies on an overlay to be clearly read. When it comes to SEO, search engines cannot index burned-in information",
         images: [
           {
@@ -275,10 +337,27 @@ export const studies = [
           },
         ],
       },
+      // {
+      //   id: 'decisions',
+      //   title: 'Design Decisions',
+      //   description: "The original website suffered from accumulated technical debt and outdated design patterns that degraded both user experience and search performance. Across the platform, key information was buried in static content, making simple content updates tedious and severely limiting overall usability.\n\nOne of them is the original Projects page, which is a critical proof point for the company's capabilities, utilized a CMS-driven carousel displaying project images with limited metadata; see Figure 1. This structure suffered from a major issue:\n\n1.) Accessibility and SEO best practices: Relying solely on images to convey project information—a “burned-in” or “baked-in” text (text is part of the image itself and has no alternative text)—creates accessibility barriers and risks a poor user experience on slow connections. Additionally, this information blocks the visual assets and prevents the visitor from viewing the whole image, and the text heavily relies on an overlay to be clearly read. When it comes to SEO, search engines cannot index burned-in information",
+      //   images: [
+      //     {
+      //       url: excellCardDraft,
+      //       alt: 'Previous CMS Card Layout and Format',
+      //       caption: 'Figure 1: Previous CMS Card Layout and Format.',
+      //     },
+      //     {
+      //       url: excellCardConcepts,
+      //       alt: "Various concepts to solve SEO issues",
+      //       caption: 'Figure 1.1: Various concepts we came up with to solve SEO issues.',
+      //     },
+      //   ],
+      // },
       {
-        id: 'hand-off',
-        title: 'Hand-off & Implementation',
-        description: "The use of Plasmic itself is new not only to us but for the entire company as well, and we were the first to successfully integrate this tech stack. Upon final deployment of the product, I, along with my co-intern, also managed the onboarding process. We focused specifically on authoring step-by-step use of the Content Management System (CMS) of Plasmic for the company’s future developers, content managers, and editorial teams, ensuring clear instructions and efficient use of the new UI/CMS capabilities.",
+        id: 'results',
+        title: 'Impacts & Outcomes',
+        description: "The use of Plasmic itself is new not only to us but for the entire company as well, and we were the first to successfully integrate this tech stack. Upon final deployment of the product, I, along with my co-intern, also managed the onboarding process. We focused specifically on authoring step-by-step use of the Content Management System (CMS) of Plasmic for the company’s future developers, content managers, and editorial teams, ensuring clear instructions and efficient use of the new UI/CMS capabilities.\n\nAdditionally, our key success identifier is the overall performance of the website.  We were able to get an overwhelming improvement from the legacy website, and the revamp gained an accessibility score of 79%, best practices of 96%, and SEO of 82%.",
         images: [
           {
             url: excellGuide,
@@ -295,10 +374,6 @@ export const studies = [
     ],
     
     cards: [
-      {
-        title: 'Quantifiable Results',
-        description: 'At the end of the project, our key success identifier is the overall performance of the website.  We were able to get an overwhelming improvement from the legacy website, and the revamp gained an overall performance score of 96/100 with accessibility of 79%, best practices of 96%, and SEO of 82%.',
-      },
       {
         title: 'Design Success in Synergy',
         description: "We realized that our objective wasn't just to build a modern website, but to build brand credibility and rebuild what the company had already established. By shifting our focus to customer trust and confidence metrics, we transformed the UI from a simple informational website into a conversion tool.",
@@ -400,7 +475,7 @@ export const studies = [
           {
             url: ticaDesign,
             alt: 'Slow Design Approach',
-            caption: 'Figure 3: Progression system where users have the freedom to explore the app at their own pace.',
+            caption: 'Figure 3: Users have the freedom to finish each module at their own pace.',
           },
           {
             url: ticaFonts,
@@ -422,7 +497,7 @@ export const studies = [
       {
         id: 'results',
         title: 'Impacts & Outcomes',
-        description: "Overall, the platform was well-received by users and successfully demonstrated how gamified technology can enhance children's learning. The gamified approach kept young users actively engaged, while the structured articulation hierarchy allowed children to learn comfortably at their own pace. Combining interactive visuals with AI speech recognition gave users a clear, physical way to practice sound production and receive feedback.\n\nWhile overall sentiment was positive, user testing highlighted key areas for optimization, most notably our onboarding flow. Due to tight technical and time constraints during development, the sign-in and sign-up process felt longer than standard industry benchmarks and lacked single sign-on (SSO) options like Google sign-in.\n\nMoving forward, streamlining user authentication and reducing onboarding friction remain as one of the priority for future developers.",
+        description: "Overall, the platform was well-received by users and successfully demonstrated the gamified approach kept users actively engaged, while the structured slow design approach allowed them to navigate the lessons comfortably at their own pace. Combining interactive visuals with AI speech recognition gave users a clear, physical way to practice sound production and receive feedback.\n\nWhile overall sentiment was positive, user testing highlighted key areas for optimization, most notably our onboarding flow. Due to tight technical and time constraints during development, the sign-in and sign-up process felt longer than standard industry benchmarks and lacked single sign-on (SSO) options like Google sign-in.\n\nMoving forward, streamlining user authentication and reducing onboarding friction remain as one of the priority for future developers.",
       },
     ],
     
