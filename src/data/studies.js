@@ -375,11 +375,60 @@ export const studies = [
           },
         ],
       },
+      {
+        id: 'process',
+        title: 'Design Process',
+        description: "In collaboration with the client, we grounded our core gameplay loop in the Articulation Hierarchy. It is a proven speech therapy framework designed to teach correct sound production step-by-step. We structured each chapter around four progressive stages: Discrimination > Isolation > Syllables > Words. Here's a breakdown of each stage:\n\nStage 1 - Discrimination: Distinguishing the target sound from incorrect sounds.\n\nStage 2 - Isolation: Producing the target sound on its own.\n\nStage 3 - Syllables: Combining sounds with vowels (VC or CV combinations).\n\nStage 4 - Words: Applying target sounds within full words.\n\nThis structured approach ensures that children master each stage before progressing, fostering a comprehensive understanding of sound production. Every stage uses a sequential Lesson > Quiz structure to ensure mastery before progression. By pairing visual guidance with an AI speech-recognition engine, the gameplay helps children both recognize sounds and physically practice producing them correctly (see Figure 1.2).",
+        images: [
+          {
+            url: ticaReference,
+            alt: 'Layout Issues',
+            caption: 'Figure 2: Material gathered from the client during one of the consultations.',
+          },
+          {
+            url: ticaLesson,
+            alt: 'Layout Issues',
+            caption: 'Figure 2.1: A preview of how the lesson and quiz pages look like based on articulation hierarchy, which is the main feature of the app.',
+          },
+        ],
+      },
+      {
+        id: 'decisions',
+        title: 'Design Decisions',
+        description: "In figure 3, we structured the learning modules in a gated progression system where quiz modules remain locked until the prerequisite lesson content is completed. This intentional application of Slow Design prevents cognitive overwhelm and encourages intentionality, ensuring that users pause for reflection and discussion rather than rushing through.\n\nFigure 3.1, Font Choices: Lexend Deca is chosen for the body text as it is short and wide, which creates enough 'breathing room' that makes reading clear. On the other hand, Passion One is chosen as the display font, as it is tall and narrow, which creates the emphasis we needed for important text like call-to-action buttons.\n\nFigure 3.2: Color palette. While standard WCAG contrast ratios were a benchmark, our primary design goal was to prevent cognitive fatigue. For a younger demographic, we opted for various approaches that move away from the traditional standards. We highly emphasized soft visuals, emotional connection, and personalization.\n\nFigure 3.3: Custom assets. We created custom assets to establish emotional connection and make each lesson and quiz less intimidating and more engaging. Our mascots, from left to right, are Tica, our giraffe developed by me; Chuck the chicken, who originally was a white chicken (but we opted for a brown-feathered one as it is the most common you can see in the country) developed by my fellow front-end developer; and finally, our poster mascot, Finn the fox, developed by our design lead.",
+        images: [
+          {
+            url: ticaDesign,
+            alt: 'Slow Design Approach',
+            caption: 'Figure 3: Progression system where users have the freedom to explore the app at their own pace.',
+          },
+          {
+            url: ticaFonts,
+            alt: 'Font Choices',
+            caption: 'Figure 3.1: Font choices for the application.',
+          },
+          {
+            url: ticaColors,
+            alt: 'Color Palette',
+            caption: 'Figure 3.2: Color palette for the application.',
+          },
+          {
+            url: ticaAsset,
+            alt: 'Asset Set',
+            caption: 'Figure 3.3: Custom asset set for the application.',
+          },
+        ],
+      },
+      {
+        id: 'results',
+        title: 'Impacts & Outcomes',
+        description: "Overall, the platform was well-received by users and successfully demonstrated how gamified technology can enhance children's learning. The gamified approach kept young users actively engaged, while the structured articulation hierarchy allowed children to learn comfortably at their own pace. Combining interactive visuals with AI speech recognition gave users a clear, physical way to practice sound production and receive feedback.\n\nWhile overall sentiment was positive, user testing highlighted key areas for optimization, most notably our onboarding flow. Due to tight technical and time constraints during development, the sign-in and sign-up process felt longer than standard industry benchmarks and lacked single sign-on (SSO) options like Google sign-in.\n\nMoving forward, streamlining user authentication and reducing onboarding friction remain as one of the priority for future developers.",
+      },
     ],
     
     cards: [
       {
-        title: 'The Key to Efficiency: Automation',
+        title: 'Automation in Design Workflow',
         description: "Maintaining design direction manually was manageable early on, but it quickly created workflow issues as screens multiplied. Transitioning to a Figma's automation features—leveraging Auto Layout and design tokens had forever changed our workflow. It eliminated manual pixel-pushing, guaranteed responsiveness across screen sizes, and allowed us to focus on solving UX problems rather than re-aligning UI elements by hand (or by mouse, rather).",
       },
     ],

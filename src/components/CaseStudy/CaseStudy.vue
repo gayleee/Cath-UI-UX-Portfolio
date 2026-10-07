@@ -119,7 +119,7 @@
           </div>
         </div>
 
-        <div v-if="currentStudy.cards?.length" id="reflections" class="py-12">
+        <div v-if="currentStudy.cards?.length" id="reflections" class="pb-12">
           <h2 class="text-subtitle-display font-display">Reflections</h2>
           <div class="flex flex-col gap-4 py-8">
             <div 
