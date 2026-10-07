@@ -26,6 +26,10 @@
     <main class="relative min-w-0 flex-1 px-4 pt-20 sm:px-6 sm:pt-24 lg:px-8 lg:pt-0">
       <div v-if="currentStudy" class="mx-auto grid w-full max-w-5xl grid-cols-1 gap-4 py-8 md:py-24" id="overview">
         <Header :heading="currentStudy.name" class="font-display" />
+        <div v-if="currentStudy.award" class="flex gap-2 pb-2 items-center award-container" style="color: var(--brand-color);">
+          <Trophy size="16" />
+          <p class="font-display">{{ currentStudy.award }}</p>
+        </div>
 
         <Introduction :description="currentStudy.description" />
         <IntroImage :intro="currentStudy?.intro" />
@@ -116,14 +120,19 @@
         </div>
 
         <div v-if="currentStudy.cards?.length" id="reflections" class="py-12">
-          <h2 class="text-subtitle-display font-display pb-4">Reflections</h2>
+          <h2 class="text-subtitle-display font-display">Reflections</h2>
           <div class="flex flex-col gap-4 py-8">
             <div 
               v-for="(card, cardIdx) in currentStudy.cards" 
               :key="cardIdx" 
               class="p-6 border border-slate-200 dark:border-neutral-800 bg-slate-50/50 dark:bg-neutral-900/30"
             >
-              <h3 v-if="card.title" class="font-display font-medium text-lg mb-2">{{ card.title }}</h3>
+              <div class="flex flex-row gap-2 items-center mb-4">
+                <BookOpenCheck size="16" class="text-(--brand-color)" />
+                <h3 class="text-lg font-display text-(--brand-color) dark:text-(--brand-color)">
+                  {{ card.title }}
+                </h3>
+              </div>
               <p v-if="card.description" class="text-sm font-body text-slate-600 dark:text-slate-300">{{ card.description }}</p>
             </div>
           </div>
@@ -135,11 +144,10 @@
       </div>
     </main>
 
-    <!-- Right Aside: Fixed panel locked to screen top right -->
     <aside class="relative max-lg:hidden w-56 shrink-0 border-l border-slate-300 dark:border-neutral-800">
       <div class="fixed top-20 right-4 w-48 flex flex-col gap-4 max-h-[calc(100vh-6rem)] overflow-y-auto z-10">
         <p class="text-slate-400 dark:text-slate-200 font-display">
-          Up Next
+          Explore More
         </p>
         <div class="sidebar-card-compact flex flex-col gap-4">
           <CaseStudyList
@@ -171,6 +179,7 @@ import CaseStudyList from '../CaseStudy/CaseStudyList.vue'
 import Highlight from '../Layout/Highlight.vue'
 import Content from '../Layout/Content.vue'
 import Modal from '../Layout/Modal.vue'
+import { BookOpenCheck, Trophy } from '@lucide/vue'
 
 // console.log(route.params)
 // console.log(currentStudy.roleData.theme)

@@ -39,18 +39,17 @@
     </section>
 
     <section id="casestudy-section" class="py-20 max-w-352 mx-auto border-x-0 md:border-x border-slate-200 dark:border-(--color-border)">
-    <h2 class="font-display text-2xl md:text-3xl text-center mb-12">Case Studies</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 border-t border-b border-slate-200 dark:border-(--color-border) caseStudies">
-      <div 
-        v-for="(study, index) in studies" 
-        :key="study.id"
-        class="caseStudies p-8 border-b md:border-r border-slate-200 dark:border-(--color-border) md::nth-child[2n]:border-r-0 md:nth-last-child[-n+2]:border-b-0"
-      >
-        <CaseStudyList :caseStudy="study" />
+      <h2 class="font-display text-2xl md:text-3xl text-center mb-12">Case Studies</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 border-t border-b border-slate-200 dark:border-(--color-border) caseStudies">
+        <div 
+          v-for="(study, index) in studies" 
+          :key="study.id"
+          class="caseStudies p-8 border-b md:border-r border-slate-200 dark:border-(--color-border) md::nth-child[2n]:border-r-0 md:nth-last-child[-n+2]:border-b-0"
+        >
+          <CaseStudyList :caseStudy="study" />
+        </div>
       </div>
-    </div>
-  </section>
-
+    </section>
   </main>
 </template>
 

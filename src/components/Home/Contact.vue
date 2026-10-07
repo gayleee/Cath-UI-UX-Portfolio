@@ -5,7 +5,7 @@
     >
       <div class="relative z-10 flex flex-col max-w-5xl gap-6 pb-12">
         <h1 class="text-hero-display font-display text-5xl md:text-[80px] lg:text-[120px] leading-none text-balance tracking-tight">
-          Let's Connect
+          Let's Connect!
         </h1>
         
         <p class="text-slate-500 text-lg md:text-xl max-w-2xl">

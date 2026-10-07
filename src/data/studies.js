@@ -52,9 +52,10 @@ export const studies = [
     id: 0,
     slug: 'iskolar-express-egov-hackathon-2026',
     name: 'Iskolar Express - eGov Hackathon 2026',
-    description: "Our team's eGov Hackathon solution—Iskolar Express, a centralized web-app scholarship management platform that streamlines stipend processing from submission to release by allowing students to find a suitable scholarship for their needs and conveniently apply online.",
+    description: "Our team's eGov Hackathon solution—Iskolar Express, a centralized web-app scholarship management platform that streamlines stipend processing from submission to release by allowing students to find a suitable scholarship for their needs and conveniently apply and track their applications online.\n\nThe event was a two-day hackathon, held  at the SMX Convention Center Aura in Taguig City, Philippines, and was open to all Filipino tech talents. Our team was composed of 5 members, and each role had one person assigned (e.g., Frontend Developer, Backend Developer, Quality Assurance, etc.). I was the sole UI/UX designer on the team.",
     readTimeMinutes: 5,
     length: 'July 2026',
+    award: '',
     
     thumbnail: {
       url: iskolarExpressThumbnail,
@@ -102,17 +103,17 @@ export const studies = [
       {
         id: 'project',
         title: 'Background & Design Process',
-        description: "As the sole designer on our team, I was tasked with designing role-tailored UI where features and permissions are tied to roles and workflows within a strict, single-sprint timeframe (~1–2 weeks).\n\nFrom the lessons learned from past projects, I shifted away from assumption-led decisions. Before jumping into wireframes, we conducted a rapid, informal UX benchmark of competitor platforms and adjacent systems sharing our core functional principles; adhering to a fundamental UX design principle—Jakob's Law.\n\n'Users spend most of their time on other sites. This means that users prefer your site to work the same way as all the other sites they already know' (Yablonski, n.d., Key Takeaways section, para. 1). This informed our design decisions, ensuring that our solution was both innovative and aligned with established usability norms, one of these are:\n\n1.) Common patterns and user expectations - Instead of reinventing interaction patterns, we identified common conventions across these systems. By adopting established UX patterns, we ensured that users across all 4 roles could navigate the platform with zero learning curve.",
+        description: "I was tasked with designing role-tailored UI where features and permissions are tied to roles and workflows within a strict, single-sprint timeframe (~1–2 weeks).\n\nFrom the lessons learned from past projects, I shifted away from assumption-led decisions. Before jumping into wireframes, we conducted a rapid, informal UX benchmark of competitor platforms and adjacent systems sharing our core functional principles; adhering to a fundamental UX design principle—Jakob's Law.\n\n'Users spend most of their time on other sites. This means that users prefer your site to work the same way as all the other sites they already know' (Yablonski, n.d., Key Takeaways section, para. 1). This informed our design decisions, ensuring that our solution was both innovative and aligned with established usability norms, one of these are:\n\n1.) Common patterns and user expectations - Instead of reinventing interaction patterns, we identified common conventions across these systems. By adopting established UX patterns, we ensured that users across all 4 roles could navigate the platform with zero learning curve.",
         images: [
           {
             url: iskolarExpressAdminLogin,
             alt: 'Admin Side Preview',
-            caption: 'Admin Side Preview',
+            caption: 'Figure 1: Admin Side Preview',
           },
           {
             url: iskolarExpressOverview,
             alt: 'Mobile Application Preview',
-            caption: 'Mobile Application Preview',
+            caption: 'Figure 1.1: Mobile Application Preview',
           },
         ],
       },
@@ -132,6 +133,7 @@ export const studies = [
     description: "A web-based community platform for niche interests, connecting like-minded individuals and fostering meaningful interactions. A 3-day timeline (online) competition with predefined branding guidelines with professional judges, held right after the end of my internship. The event brought together information technology students from all year levels.",
     readTimeMinutes: 5,
     length: 'June 2025',
+    award: 'Champion, ISKOnnovation: EUREKA 2025 UI Design Competition',
     
     thumbnail: {
       url: niicheThumbnail,
@@ -148,9 +150,7 @@ export const studies = [
     },
 
     tags: [
-      { name: 'Next.js', category: 'Frontend' },
-      { name: 'React', category: 'Frontend' },
-      { name: 'Supabase', category: 'Database' },
+      { name: 'Figma', category: 'Design' },
     ],
     cta: {
       label: 'Read Official Brief',
@@ -212,6 +212,7 @@ export const studies = [
     description: "Excell Energy is a subsidiary of MabuhayPower Holdings Corporation, a solar energy provider based in Bonifacio Global City. I, along with my one co-intern, were accepted as a web developer under Mabuhay Energy Corporation (MECO) and were assigned to work under Excell Energy.\n\nWe were required to learn new tech stacks (Plasmic, Vue.js, Vercel, and Supabase) and our responsibilities are improving the website performance and modernizing their digital presence and user experience. Ultimately, the full website revamp was completed over 3 months as an internship deliverable.",
     readTimeMinutes: 5,
     length: 'March - June 2025',
+    award: '',
     
     thumbnail: {
       url: excellThumbnail,
@@ -235,7 +236,7 @@ export const studies = [
     ],
     cta: {
       label: '',
-      // url: 'https://mb.com.ph/2026/07/22/egovph-hackathon-opens-government-innovation-to-filipino-tech-talents',
+      // url: '',
       // isExternal: true,
     },
     callout: {
@@ -247,7 +248,7 @@ export const studies = [
       {
         title: 'Web Developer', 
         tasks: ['Developed responsive web & mobile pages', 'Integrated Plasmic Content Management System (CMS)', 'Optimized SEO', 'Tested and fixed layout bugs'],
-        tools: ['Plasmic', 'Vue.js', 'Supabase', 'Vercel'],
+        tools: ['Plasmic', 'Plasmic CMS', 'Vue.js', 'Supabase', 'Vercel'],
       },
       {
         title: 'Web Designer (UI/UX Designer)', 
@@ -265,12 +266,12 @@ export const studies = [
           {
             url: excellCardDraft,
             alt: 'Previous CMS Card Layout and Format',
-            caption: 'Figure 1. Previous CMS Card Layout and Format.',
+            caption: 'Figure 1: Previous CMS Card Layout and Format.',
           },
           {
             url: excellCardConcepts,
             alt: "Various concepts to solve SEO issues",
-            caption: 'Figure 1.1. Various concepts we came up with to solve SEO issues.',
+            caption: 'Figure 1.1: Various concepts we came up with to solve SEO issues.',
           },
         ],
       },
@@ -282,12 +283,12 @@ export const studies = [
           {
             url: excellGuide,
             alt: 'Excell Energy Website Revamp Design Guide',
-            caption: 'Figure 1. Excell Energy Website Revamp Design Guide authored by me and my co-developer.',
+            caption: 'Figure 2: Excell Energy Website Revamp Design Guide authored by me and my co-developer.',
           },
           {
             url: excellFile,
             alt: "A preview of the revamped website's design guide",
-            caption: 'Figure 1.1. A preview of the revamped website design guide authored by me and my co-developer.',
+            caption: 'Figure 2.1: A preview of the revamped website design guide authored by me and my co-developer.',
           },
         ],
       },
@@ -311,6 +312,8 @@ export const studies = [
     description: "Our capstone project—a gamified mobile application developed over 6 months, offering an AI-powered speech therapy for children with Childhood apraxia of speech (CAS). Built with Kivy, an open-source Python framework for developing GUI across various platforms.\n\nNotably, this project was also entered and competed in a week-long hybrid innovation event open to other programs of our university.",
     readTimeMinutes: 5,
     length: 'Aug 2024 - Feb 2025',
+    award: '3ʳᵈ,  ISKOnnovation: The GDSC Ideathon 2024',
+
     
     thumbnail: {
       url: ticaThumbnail,
@@ -327,9 +330,9 @@ export const studies = [
     },
 
     tags: [
-      { name: 'Next.js', category: 'Frontend' },
-      { name: 'React', category: 'Frontend' },
-      { name: 'Supabase', category: 'Database' },
+      { name: 'Python', category: 'Frontend' },
+      { name: 'Kivy', category: 'Frontend' },
+      { name: 'KivyMD', category: 'Frontend' },
     ],
     cta: {
       label: 'View Award',
@@ -356,19 +359,19 @@ export const studies = [
     
     sections: [
       {
-        id: 'project',
-        title: 'Background & Design Process',
+        id: 'challenge',
+        title: 'Challenges',
         description: "The project utilizes a Python framework, Kivy version 2.3.2 (stable) and KivyMD version 2.0.0 (non-dev, stable release), which are new to us. However, implementing an unfamiliar framework while managing the design phase introduced technical friction. Simultaneously upskilling and adhering to our design direction challenged our project timeline.\n\nAs we deepened our understanding of the framework’s component logic, our UI components pivoted to align with the framework's limitations. For instance, we wanted to add icons to our lesson and quiz buttons, but as simple as it sounds, it gave us narrow options:\n\n1.) Kivy does not natively allow icons on rounded buttons.\n\n2.) Those buttons that allow icons have strict position requirements. This is only one of the predicaments we faced that challenged our design. In this particular example, we already established rounded buttons across the app, which resulted in either the app crashing or us adjusting the design that did not adhere to the global style; we chose the latter; see Figure 1.",
         images: [
           {
             url: ticaChallenge,
             alt: 'Layout Issues',
-            caption: 'Figure 1. One of the problems we came across that changed our original component design from the rest of the app.',
+            caption: 'Figure 1: One of the problems we came across that changed our original component design from the rest of the app.',
           },
           {
             url: ticaChallenge1,
             alt: 'Layout Issues',
-            caption: 'Figure 2. Another challenge we faced during the design process.',
+            caption: 'Figure 1.1: Another challenge we faced during the design process.',
           },
         ],
       },

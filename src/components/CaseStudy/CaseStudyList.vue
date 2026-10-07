@@ -58,8 +58,6 @@
 
 <script setup>
 import { computed } from 'vue'
-// import { Trophy } from '@lucide/vue'
-// import Tag from '../Layout/Tag.vue'
 
 const props = defineProps({
   caseStudy: {
