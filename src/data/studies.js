@@ -89,12 +89,12 @@ export const studies = [
     roles: [
       {
         title: 'UI/UX Designer', 
-        tasks: ['UX Benchmarking', 'Design System Creation', 'Wireframing', 'Prototyping', 'UI Design'],
+        tasks: ['UX Benchmarking', 'Design System Creation', 'Low-Fidelity Wireframing', 'High-Fidelity Wireframing', 'Prototyping',],
         tools: ['Figma'],
       },
       {
         title: 'Graphic Designer', 
-        tasks: ['Logo Design', 'Brand Identity', 'Short Animation Demo (used as a part of the actual presentation video)'],
+        tasks: ['Logo Design', 'Brand Identity', 'Short Animation Demo (part of the actual presentation video)'],
         tools: ['Affinity Designer', 'Rive'],
       },
     ],
