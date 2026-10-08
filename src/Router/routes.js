@@ -10,6 +10,7 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     { path: '/', component: HomePage },
+    { path: '/index.html', redirect: '/' },
     { path: '/about', component: About, name: 'about' },
     { path: '/contact', component: Contact, name: 'contact' },
     // { path: '/casestudy/:caseStudyId', name: 'CaseStudy', component: CaseStudy },
