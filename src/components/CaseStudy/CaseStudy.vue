@@ -11,7 +11,7 @@
                 class="block -ml-px border-l-2 pl-4 transition-all duration-150 font-display"
                 :class="
                   activeSection === item.id
-                    ? 'border-(--brand-color) font-medium text-(--brand-color) dark:text-(--brand-color)'
+                    ? 'border-(--brand-color) font-medium text-(--brand-color)'
                     : 'border-transparent text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-200'
                 "
               >
@@ -63,7 +63,7 @@
                   :key="roleItem.title || index"
                   class="align-top hover:bg-slate-50/50 dark:hover:bg-neutral-900/30 transition-colors"
                 >
-                  <td class="py-4 px-4 text-(--brand-color) dark:text-(--brand-color) whitespace-nowrap font-display">
+                  <td class="py-4 px-4 text-(--brand-color) whitespace-nowrap font-display">
                     {{ roleItem.title }}
                   </td>
                   <td class="py-4 px-4 text-slate-600 dark:text-slate-300">
@@ -104,9 +104,12 @@
             <h2 v-if="section.title" class="text-subtitle-display font-display pb-4">
               {{ section.title }}
             </h2>
-            <p v-if="section.description" class="font-body whitespace-pre-line leading-relaxed mb-6">
-              {{ section.description }}
-            </p>
+            
+            <p 
+              v-if="section.description" 
+              v-html="section.description"
+              class="font-body whitespace-pre-line leading-relaxed mb-6"
+            ></p>
 
             <div v-if="section.images?.length" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <figure v-for="(img, imgIdx) in section.images" :key="imgIdx" class="flex flex-col">
@@ -129,7 +132,7 @@
             >
               <div class="flex flex-row gap-2 items-center mb-4">
                 <BookOpenCheck size="16" class="text-(--brand-color)" />
-                <h3 class="text-lg font-display text-(--brand-color) dark:text-(--brand-color)">
+                <h3 class="text-lg font-display text-(--brand-color)">
                   {{ card.title }}
                 </h3>
               </div>
@@ -141,6 +144,14 @@
         <div class="w-full mx-auto">
           <Pagination />
         </div>
+      </div>
+
+      <div v-else class="mx-auto max-w-xl text-center py-24 px-4">
+        <h1 class="text-2xl font-display font-bold mb-2">Case Study Not Found</h1>
+        <p class="text-slate-500 dark:text-slate-400 mb-6 font-body">
+          The project you are looking for is currently loading.
+        </p>
+        <router-link to="/" class="underline text-blue-600 font-body">Return to Home</router-link>
       </div>
     </main>
 
@@ -162,10 +173,9 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted, nextTick, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { studies } from '@/data/studies'
-import { computed } from 'vue'
 
 import Tag from '../Layout/Tag.vue'
 import Header from '../Layout/Header.vue'
@@ -181,48 +191,35 @@ import Content from '../Layout/Content.vue'
 import Modal from '../Layout/Modal.vue'
 import { BookOpenCheck, Trophy } from '@lucide/vue'
 
-// console.log(route.params)
-// console.log(currentStudy.roleData.theme)
-
 const route = useRoute()
-const studySlug = route.params.slug
 
-const currentStudy = studies.find((s) => s.slug === studySlug)
-
-const otherCaseStudies = computed(() => {
-  if (!currentStudy) return studies
-  return studies.filter((study) => study.slug !== currentStudy.slug)
+const currentStudy = computed(() => {
+  const slug = route.params.slug
+  if (!slug) return null
+  return studies.find((s) => s.slug === slug) || null
 })
 
-// const route = useRoute()
-
-// const currentStudy = computed(() => {
-//   const slugParam = route.params.slug
-//   if (!slugParam) return null
-  
-//   return studies.find((s) => String(s.slug).trim() === String(slugParam).trim())
-// })
-
-// const otherCaseStudies = computed(() => {
-//   if (!currentStudy.value) return studies
-//   return studies.filter((study) => study.slug !== currentStudy.value.slug)
-// })
+const otherCaseStudies = computed(() => {
+  if (!currentStudy.value) return studies
+  return studies.filter((study) => study.slug !== currentStudy.value.slug)
+})
 
 const activeSection = ref('overview')
 const isManualScrolling = ref(false)
 let scrollTimeout = null
+let observer = null
 
 const navItems = computed(() => {
-  if (!currentStudy) return []
+  if (!currentStudy.value) return []
 
   const items = [{ id: 'overview', label: 'Overview' }]
 
-  if (currentStudy.roles?.length) {
+  if (currentStudy.value.roles?.length) {
     items.push({ id: 'role', label: 'Role & Tools' })
   }
 
-  if (currentStudy.sections?.length) {
-    currentStudy.sections.forEach((sec) => {
+  if (currentStudy.value.sections?.length) {
+    currentStudy.value.sections.forEach((sec) => {
       if (sec.id !== 'overview') {
         items.push({
           id: sec.id,
@@ -232,7 +229,7 @@ const navItems = computed(() => {
     })
   }
 
-  if (currentStudy.cards?.length) {
+  if (currentStudy.value.cards?.length) {
     items.push({ id: 'reflections', label: 'Reflections' })
   }
 
@@ -255,8 +252,6 @@ const scrollToSection = (id) => {
   }, 800)
 }
 
-let observer = null
-
 const handleScroll = () => {
   if (isManualScrolling.value) return
 
@@ -276,8 +271,8 @@ const handleScroll = () => {
   }
 }
 
-onMounted(() => {
-  window.addEventListener('scroll', handleScroll, { passive: true })
+const setupObserver = () => {
+  if (observer) observer.disconnect()
 
   observer = new IntersectionObserver(
     (entries) => {
@@ -299,11 +294,25 @@ onMounted(() => {
     }
   )
 
-  navItems.value.forEach((item) => {
-    const el = document.getElementById(item.id)
-    if (el) observer.observe(el)
+  nextTick(() => {
+    navItems.value.forEach((item) => {
+      const el = document.getElementById(item.id)
+      if (el) observer.observe(el)
+    })
   })
+}
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll, { passive: true })
+  setupObserver()
 })
+
+watch(
+  () => route.params.slug,
+  () => {
+    setupObserver()
+  }
+)
 
 onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll)
