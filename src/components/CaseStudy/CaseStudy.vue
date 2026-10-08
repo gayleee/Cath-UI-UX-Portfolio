@@ -303,6 +303,12 @@ const setupObserver = () => {
 }
 
 onMounted(() => {
+  console.log('test')
+  console.log('Raw route.params:', route.params)
+  console.log('Route slug:', route.params.slug)
+  console.log('Loaded studies data:', studies)
+  console.log('Current study match:', currentStudy.value)
+
   window.addEventListener('scroll', handleScroll, { passive: true })
   setupObserver()
 })
