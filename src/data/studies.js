@@ -46,13 +46,13 @@ import ticaColors from '@/assets/ticaAssets/ticaColors.webp'
 import ticaFonts from '@/assets/ticaAssets/ticaFonts.webp'
 import ticaDesign from '@/assets/ticaAssets/ticaDesign.webp'
 
-import iskolarExpressOverview from '/src/assets/iskolarExpressAssets/iskolarExpressOverview.webp'
-import iskolarExpressMain from '/src/assets/iskolarExpressAssets/iskolarExpressMain.webp'
-import iskolarExpressAdminLogin from '/src/assets/iskolarExpressAssets/iskolarExpressAdminLogin.webp'
-import iskolarExpressColor from '/src/assets/iskolarExpressAssets/iskolarColor.webp'
-import iskolarExpressHeading from '/src/assets/iskolarExpressAssets/iskolarHeading.webp'
-import iskolarExpressBody from '/src/assets/iskolarExpressAssets/iskolarBody.webp'
-import iskolarExpressAsset from '/src/assets/iskolarExpressAssets/iskolarAsset.webp'
+import iskolarExpressOverview from '@/assets/iskolarExpressAssets/iskolarExpressOverview.webp'
+import iskolarExpressMain from '@/assets/iskolarExpressAssets/iskolarExpressMain.webp'
+import iskolarExpressAdminLogin from '@/assets/iskolarExpressAssets/iskolarExpressAdminLogin.webp'
+import iskolarExpressColor from '@/assets/iskolarExpressAssets/iskolarColor.webp'
+import iskolarExpressHeading from '@/assets/iskolarExpressAssets/iskolarHeading.webp'
+import iskolarExpressBody from '@/assets/iskolarExpressAssets/iskolarBody.webp'
+import iskolarExpressAsset from '@/assets/iskolarExpressAssets/iskolarAsset.webp'
 
 export const studies = [
   {
