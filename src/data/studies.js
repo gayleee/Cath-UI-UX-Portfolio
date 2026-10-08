@@ -4,14 +4,6 @@ import niicheThumbnail from '/src/assets/thumbnails/niicheThumbnail.webp'
 import ootuThumbnail from '/src/assets/thumbnails/ootuThumbnail.webp'
 import iskolarExpressThumbnail from '/src/assets/thumbnails/iskolarExpressThumbnail.webp'
 
-import iskolarExpressOverview from '/src/assets/iskolarExpressAssets/iskolarExpressOverview.webp'
-import iskolarExpressMain from '/src/assets/iskolarExpressAssets/iskolarExpressMain.webp'
-import iskolarExpressAdminLogin from '/src/assets/iskolarExpressAssets/iskolarExpressAdminLogin.webp'
-import iskolarExpressColor from '/src/assets/iskolarExpressAssets/iskolarColor.webp'
-import iskolarExpressHeading from '/src/assets/iskolarExpressAssets/iskolarHeading.webp'
-import iskolarExpressBody from '/src/assets/iskolarExpressAssets/iskolarBody.webp'
-import iskolarExpressAsset from '/src/assets/iskolarExpressAssets/iskolarAsset.webp'
-
 import ootuWireframes from '@/assets/ootuAssets/ootuWireframes.webp'
 import ootuOOUX from '@/assets/ootuAssets/ootuOOUX.webp'
 import ootuDraft from '@/assets/ootuAssets/ootuDraft.webp'
@@ -53,6 +45,14 @@ import ticaAsset from '@/assets/ticaAssets/ticaAsset.webp'
 import ticaColors from '@/assets/ticaAssets/ticaColors.webp'
 import ticaFonts from '@/assets/ticaAssets/ticaFonts.webp'
 import ticaDesign from '@/assets/ticaAssets/ticaDesign.webp'
+
+import iskolarExpressOverview from '/src/assets/iskolarExpressAssets/iskolarExpressOverview.webp'
+import iskolarExpressMain from '/src/assets/iskolarExpressAssets/iskolarExpressMain.webp'
+import iskolarExpressAdminLogin from '/src/assets/iskolarExpressAssets/iskolarExpressAdminLogin.webp'
+import iskolarExpressColor from '/src/assets/iskolarExpressAssets/iskolarColor.webp'
+import iskolarExpressHeading from '/src/assets/iskolarExpressAssets/iskolarHeading.webp'
+import iskolarExpressBody from '/src/assets/iskolarExpressAssets/iskolarBody.webp'
+import iskolarExpressAsset from '/src/assets/iskolarExpressAssets/iskolarAsset.webp'
 
 export const studies = [
   {
@@ -382,7 +382,7 @@ export const studies = [
   },
   {
     id: 3,
-    slug: 'TICA: A Technological Innovation for Communication in Apraxia - A Mobile Application Utilizing AI-Driven Speech Therapy for Children with Apraxia',
+    slug: 'tica-technological-innovation-for-communication-in-apraxia',
     name: 'TICA: A Technological Innovation for Communication in Apraxia',
     description: "Our capstone project—a gamified mobile application developed over 6 months, offering an AI-powered speech therapy for children with Childhood apraxia of speech (CAS). Built with Kivy, an open-source Python framework for developing GUI across various platforms.\n\nNotably, this project was also entered and competed in a week-long hybrid innovation event open to other programs of our university.",
     readTimeMinutes: 5,

@@ -194,6 +194,20 @@ const otherCaseStudies = computed(() => {
   return studies.filter((study) => study.slug !== currentStudy.slug)
 })
 
+// const route = useRoute()
+
+// const currentStudy = computed(() => {
+//   const slugParam = route.params.slug
+//   if (!slugParam) return null
+  
+//   return studies.find((s) => String(s.slug).trim() === String(slugParam).trim())
+// })
+
+// const otherCaseStudies = computed(() => {
+//   if (!currentStudy.value) return studies
+//   return studies.filter((study) => study.slug !== currentStudy.value.slug)
+// })
+
 const activeSection = ref('overview')
 const isManualScrolling = ref(false)
 let scrollTimeout = null
