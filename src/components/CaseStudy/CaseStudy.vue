@@ -174,10 +174,9 @@
 
 <script setup>
 import { ref, computed, onMounted, onUnmounted, nextTick, watch } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { studies } from '@/data/studies'
 
-import Tag from '../Layout/Tag.vue'
 import Header from '../Layout/Header.vue'
 import Introduction from '../Layout/Introduction.vue'
 import Button from '../Layout/Button.vue'
@@ -185,18 +184,30 @@ import IntroImage from '../Layout/IntroImage.vue'
 import Callout from '../Layout/Callout.vue'
 import Pagination from '../Layout/Pagination.vue'
 import CaseStudyList from '../CaseStudy/CaseStudyList.vue'
-
-import Highlight from '../Layout/Highlight.vue'
-import Content from '../Layout/Content.vue'
-import Modal from '../Layout/Modal.vue'
 import { BookOpenCheck, Trophy } from '@lucide/vue'
 
 const route = useRoute()
+const router = useRouter()
+const isRouterReady = ref(false)
 
 const currentStudy = computed(() => {
-  const slug = route.params.slug
-  if (!slug) return null
-  return studies.find((s) => s.slug === slug) || null
+  const rawSlug = route.params.slug
+  if (!rawSlug) return null
+
+  const cleanSlug = decodeURIComponent(String(rawSlug))
+    .replace(/\/$/, '')
+    .trim()
+    .toLowerCase()
+
+  return (
+    studies.find((s) => {
+      const itemSlug = String(s.slug || s.id || '')
+        .replace(/\/$/, '')
+        .trim()
+        .toLowerCase()
+      return itemSlug === cleanSlug
+    }) || null
+  )
 })
 
 const otherCaseStudies = computed(() => {
@@ -302,12 +313,9 @@ const setupObserver = () => {
   })
 }
 
-onMounted(() => {
-  console.log('test')
-  console.log('Raw route.params:', route.params)
-  console.log('Route slug:', route.params.slug)
-  console.log('Loaded studies data:', studies)
-  console.log('Current study match:', currentStudy.value)
+onMounted(async () => {
+  await router.isReady()
+  isRouterReady.value = true
 
   window.addEventListener('scroll', handleScroll, { passive: true })
   setupObserver()
@@ -315,7 +323,8 @@ onMounted(() => {
 
 watch(
   () => route.params.slug,
-  () => {
+  async () => {
+    await nextTick()
     setupObserver()
   }
 )
