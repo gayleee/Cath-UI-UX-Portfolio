@@ -57,7 +57,7 @@ import iskolarExpressAsset from '@/assets/iskolarExpressAssets/iskolarAsset.webp
 export const studies = [
   {
     id: 0,
-    slug: 'iskolar-express-egov-hackathon-2026',
+    slug: 'egov-hackathon-2026',
     name: 'Iskolar Express - eGov Hackathon 2026',
     description: "Our team's eGov Hackathon solution: Iskolar Express, a centralized web-app scholarship management platform that streamlines stipend processing from submission to release by allowing students to find a suitable scholarship for their needs and conveniently apply and track their applications online. The platform is designed to be user-friendly, efficient, and accessible, ensuring that students can easily navigate the application process and receive timely updates on their scholarship status.\n\nThe event was held at the SMX Convention Center Aura in Taguig City, Philippines, and was open to all Filipino tech talents. Our team was composed of 5 members, and each role had one person assigned (e.g., Frontend Developer, Backend Developer, Quality Assurance, etc.). I was the sole UI/UX designer on the team.",
     readTimeMinutes: 5,
@@ -382,7 +382,7 @@ export const studies = [
   },
   {
     id: 3,
-    slug: 'tica-technological-innovation-for-communication-in-apraxia',
+    slug: 'tica-app',
     name: 'TICA: A Technological Innovation for Communication in Apraxia',
     description: "Our capstone project—a gamified mobile application developed over 6 months, offering an AI-powered speech therapy for children with Childhood apraxia of speech (CAS). Built with Kivy, an open-source Python framework for developing GUI across various platforms.\n\nNotably, this project was also entered and competed in a week-long hybrid innovation event open to other programs of our university.",
     readTimeMinutes: 5,
